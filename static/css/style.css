@@ -8,13 +8,13 @@
 }
 :root {
 	--color-bg: #ffffff;
-	--color-primary: #007bff;
+	--color-primary: #61cdff;
 	--color-text: #333;
 	--color-header: #000;
 	--color-footer: #666;
 	--spacing: 1rem;
 	--radius: 0.5rem;
-  --main_padding: 10rem;
+  --main_padding: 15rem;
 }
 body {
     font-family: "Noto Sans JP", sans-serif;
@@ -177,12 +177,20 @@ footer {
 	padding: var(--spacing);
 }
 .top_service__header {
-	text-align: center;
-	margin-bottom: var(--spacing);
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+.top_service__subtitle {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
 }
 .top_service__title {
-	font-size: 1.75rem;
-	color: var(--color-text);
+    font-size: 3rem;
+    color: var(--color-text);
 }
 .top_service__list {
 	margin: 0 auto;
@@ -268,47 +276,54 @@ footer {
 	text-decoration: none;
 	border-bottom: none;
 }
-
-/* — Company Section — */
 .top_company {
 	position: relative;
-	background: url("/static/images/company_bg.jpg") no-repeat center center;
+	width: 80vw;
+	margin: 20vh auto;
+	background: url("../images/company_bg_img.jpg") no-repeat center center;
 	background-size: cover;
 	padding: calc(var(--spacing) * 4) var(--spacing);
 	color: #fff;
 	overflow: hidden;
 	border-radius: var(--radius);
-	margin: calc(var(--spacing) * 2) 0;
 }
 .top_company::before {
 	content: "";
 	position: absolute;
-	top: 0; left: 0; right: 0; bottom: 0;
-	background-color: rgba(0, 0, 0, 0.4);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.6) 0%,
+		rgba(0, 0, 0, 0) 90%
+	);
 	z-index: 0;
 }
 .top_company__header,
 .top_company__body {
 	position: relative;
 	z-index: 1;
-	text-align: center;
+	text-align: left;
 }
 .top_company__subtitle,
 .top_company__title,
 .top_company__text,
 .top_company__action-link {
 	color: #fff;
+  width: 35%;
 }
 .top_company__subtitle {
-	display: block;
-	font-size: 0.875rem;
-	color: var(--color-primary);
-	letter-spacing: 0.1em;
-	margin-bottom: 0.25rem;
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
 }
 .top_company__title {
-	font-size: 2rem;
-	margin-bottom: var(--spacing);
+    font-size: 2rem;
+    margin-bottom: var(--spacing);
 }
 .top_company__text {
 	font-size: 1rem;
@@ -317,4 +332,6 @@ footer {
 }
 .top_company__action-link {
 	font-weight: 600;
+	text-decoration: none;
 }
+
