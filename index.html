@@ -16,8 +16,8 @@
     <h1>O.SINGULARITY</h1>
     <nav>
       <ul>
-        <li><a href="#about">トップ</a></li>
-        <li><a href="#contact">会社概要</a></li>
+        <li><a href="#top">ホームページ</a></li>
+        <li><a href="#company">会社概要</a></li>
         <li><a href="/blog">ブログ</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
       </ul>
@@ -25,19 +25,105 @@
   </header>
 
   <main>
-    <section id="about">
-      <h2>サービス概要</h2>
-      <p>サービス内容を一文で説明。</p>
+        <!-- Hero -->
+        <section id="top" class="top_hero">
+            <h2>O.SINGULARITY, Inc</h2>
+            <p>DXで企業の夢を応援する</p>
+            <a href="#service" class="btn-hero">詳しくはこちら</a>
+        </section>
+
+        <!-- News -->
+        <section id="news" class="top_news">
+            <!-- ヘッダー -->
+            <div class="top_news__header">
+                <small class="top_news__subtitle">NEWS</small>
+                <h2 class="top_news__title">ニュース</h2>
+            </div>
+
+            <!-- ニュース項目一覧 -->
+            <div class="top_news__list">
+                <article class="top_news__item">
+                    <h3 class="top_news__item-title">まだありません</h3>
+                </article>
+            </div>
+
+            <!-- 一覧リンク -->
+            <div class="top_news__more">
+                <a href="/news" class="top_news__more-link btn-link">
+                    一覧を見る
+                </a>
+            </div>
+        </section>
+
+        <!-- Service -->
+        <section id="service" class="top_service">
+            <header class="top_service__header">
+                <h2 class="top_service__title">Service</h2>
+            </header>
+            <div class="top_service__list">
+                <div class="top_service__item">
+                    <img src="./static/images/dashboard_img.jpg" alt="AIサービス" class="top_service__item-img">
+                    <div class="top_service__item-content">
+                        <h3 class="top_service__item-title">O.BOARD</h3>
+                        <p class="top_service__item-text">DXの風潮を社内に</p>
+                        <a href="/service/obord" class="btn-link top_service__item-link">さらに詳しく</a>
+                    </div>
+                </div>
+                <div class="top_service__item">
+                    <div class="top_service__item-content">
+                        <h3 class="top_service__item-title">DX支援事業</h3>
+                        <p class="top_service__item-text">DXの力で企業の夢を応援します</p>
+                        <a href="/service/dx" class="btn-link top_service__item-link">さらに詳しく</a>
+                    </div>
+                    <img src="./static/images/dashboard_img.jpg" alt="AIサービス" class="top_service__item-img">
+                </div>
+            </div>
+        </section>
+
+    <!-- Company -->
+    <section id="company" class="top_company">
+        <!-- ヘッダー -->
+        <div class="top_company__header">
+            <small class="top_company__subtitle">COMPANY</small>
+            <h2 class="top_company__title">会社概要</h2>
+        </div>
+        <!-- 本文 -->
+        <div class="top_company__body">
+            <p class="top_company__text">
+                株式会社O.SINGULARITYは、DXを推進する企業です。最新のAI技術を駆使し、企業の夢を実現するための支援を行っています。
+            </p>
+            <p class="top_company__action">
+                <a href="/company" class="btn-link top_company__action-link">こちらから</a>
+            </p>
+        </div>
     </section>
 
-    <section id="contact">
-      <h2>お問い合わせ</h2>
-      <p><a href="/contact">こちら</a>からどうぞ。</p>
+    <!-- Strength -->
+    <section id="strength" class="strength">
+      <h2>Strength</h2>
+      <p>わたしたちが選ばれる3つの理由</p>
+      <div class="reason">
+        <h3>REASON 01</h3>
+        <h4>最新技術</h4>
+        <p>大学の研究による、最先端の技術までのナレッジが蓄積されています。</p>
+      </div>
+      <div class="reason">
+        <h3>REASON 02</h3>
+        <h4>密なコミュニケーション</h4>
+        <p>DXを推進するにあたり、密なコミュニケーションを取ることに重きをおいております。貴社にあったカスタマイズを行うことで、「本当にしたいこと」が実現します。</p>
+      </div>
+      <div class="reason">
+        <h3>REASON 03</h3>
+        <h4>圧倒的なコストパフォーマンス</h4>
+        <p>AIのパイオニアとして、あらゆるAI技術を駆使した開発を行います。高い品質を保ちながら、通常よりもコストを抑えることができます。</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p><a href="/contact" class="btn-link">お問い合わせはこちら</a></p>
     </section>
   </main>
-
-  <footer>
-    <small>&copy; 2025 サイト名</small>
-  </footer>
 </body>
 </html>
