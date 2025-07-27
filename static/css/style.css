@@ -61,6 +61,7 @@ header {
     top: 0;
   	left: 0;
     background-color: var(--color-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     height: 12vh;
     width: 100%;
@@ -90,7 +91,7 @@ nav a:hover {
 
 /* — フッター — */
 footer {
-	background-color: var(--color-bg);
+	background-color: #eaf9ff;
 	padding: var(--spacing);
 	text-align: center;
 }
