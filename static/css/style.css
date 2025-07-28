@@ -326,44 +326,49 @@ footer {
 
 
 
-.top_strength {    /* ── Strength セクション全体 ── */
-  width: 100vw;
-  min-height: 30vh;
-  max-height: 50vh;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20vw;
-  background-color: rgba(0, 0, 0, 1);
-  display: flex;
-  flex-direction: row;        /* 横並び */
-  align-items: flex-start;    /* 上寄せ */
-  justify-content: space-between;
-  color: #fff;
-  text-align: left;
-  padding: var(--main_padding);
+/* ── Strength セクション ── */
+.top_strength {
+  margin-top: 15vh;
+  padding-top: 7rem;
+  background: linear-gradient(black, white);
 }
 .top_strength__summery {
   flex: 1;
-  margin-right: 2vw;
-  align-self: flex-start;
+  padding-right: 2rem;
 }
 .top_strength__subtitle {
   display: block;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-primary);
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+  text-align: center;
 }
 .top_strength__title {
-  font-size: 2rem;
-  margin-bottom: var(--spacing);
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.top_strength_flex-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--main_padding);
+  color: #fff;
+  overflow: hidden;
+}
+.top_strength__description {
+  font-size: 1.5rem;
+  top: -10rem;
+  position: relative;
 }
 .carousel {
   flex: 1;
-  width: 30%;
-  aspect-ratio: 1 / 1;     /* 正方形を維持 */
+  width: 400px;
+  height: 400px;
   perspective: 1000px;
-  perspective-origin: 50% 15vh;
+  top: -10rem;
   position: relative;
 }
 .carousel-inner {
@@ -371,73 +376,53 @@ footer {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transform-origin: 50% 15vh;
-  animation: rotateCarousel 15s ease-in-out infinite;
-}
-.carousel:hover .carousel-inner {
-  animation-play-state: paused;
 }
 .carousel-item {
   position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+  will-change: transform;
 }
-.carousel-item:nth-child(1) { transform: rotateY(0deg)   translateZ(12vw); }
-.carousel-item:nth-child(2) { transform: rotateY(120deg) translateZ(12vw); }
-.carousel-item:nth-child(3) { transform: rotateY(240deg) translateZ(12vw); }
-@keyframes rotateCarousel {
-  0%, 27.78%   { transform: rotateY(0deg); }
-  33.33%      { transform: rotateY(-120deg); }
-  33.33%, 61.11% { transform: rotateY(-120deg); }
-  66.67%      { transform: rotateY(-240deg); }
-  66.67%, 94.44% { transform: rotateY(-240deg); }
-  100%        { transform: rotateY(-360deg); }
-}
-.sphere_1,
-.sphere_2,
-.sphere_3 {
-  width: 20vw;
-  max-width: 200px;
-  aspect-ratio: 1 / 1;
+.carousel-item.sphere_1,
+.carousel-item.sphere_2,
+.carousel-item.sphere_3 {
+  width: 200px;
+  height: 200px;
+  margin: 0; /* translate で中央寄せするので不要 */
   border-radius: 50%;
   box-shadow:
     inset -20px -20px 60px rgba(0,0,0,0.3),
     0 15px 30px rgba(0,0,0,0.2);
-  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
-.sphere_1 {
-  background: radial-gradient(circle at 30% 30%, #ff7070, #ffd374);
-}
-.sphere_2 {
-  background: radial-gradient(circle at 30% 30%, #00c030, #5cff8d);
-}
-.sphere_3 {
-  background: radial-gradient(circle at 30% 30%, #4facfe, #00f2fe);
-}
+.carousel-item.sphere_1 { background-color: #222222; }
+.carousel-item.sphere_2 { background-color: #555555; }
+.carousel-item.sphere_3 { background-color: #CCCCCC; }
 .sphere-text {
   position: absolute;
-  top: 50%; left: 50%;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%; height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   color: #fff;
   pointer-events: none;
   z-index: 2;
-  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.sphere-text h3 { font-size: 1rem; font-weight: bold; }
-.sphere-text h4 { font-size: 0.8rem; margin-top: 0.25rem; }
-.sphere-text p  { font-size: 0.7rem; margin-top: 0.5rem; }
+.sphere-text h3 { font-size: 1.1rem; margin: 0; }
+.sphere-text h4 { font-size: 1rem; margin: 0.5rem 0; }
+.sphere-text p  { font-size: 0.9rem; margin: 0; }
+
+
+
+
+
 .top_company {    /* ── Company Section ── */
 	position: relative;
 	width: 80vw;
