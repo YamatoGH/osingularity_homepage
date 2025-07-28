@@ -539,111 +539,119 @@ footer {
 
 
 /* 会社概要ページ */
-/*======== Lead Section ========*/
-.hero_company_section {
+.company_hero_section {
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-              url('../images/lead-bg.jpg') center/cover no-repeat;
+              url('../images/company_bg_img.jpg') center/cover no-repeat;
   padding: 100px 20px;
   text-align: center;
   color: #fff;
+  margin-bottom: 15vh;
 }
-
-.hero_company_section .company_hero-title {
+.company_hero_section .company_hero-title {
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
-
-.hero_company_section p {
+.company_hero_section p {
   font-size: 1.25rem;
   line-height: 1.6;
 }
-
-/*======== Mission / Vision / Value Sections ========*/
 .company_mission,
 .company_vision,
-.company_value {
-  max-width: 800px;
+.company_value {    /*======== Mission / Vision / Value Sections ========*/
+  width: 50vw;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 15vh;
 }
-
-.company_mission h2,
-.company_vision h2,
-.company_value h2 {
+.company_mvv_title {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
-.company_mission p,
-.company_vision p,
-.company_value p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-/* Value のキャッチフレーズ */
-.company_value .company_values {
+.company_mvv_phrase {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #444;
 }
-
-/*======== Greeting Section ========*/
+.company_mvv_description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
 .company_greeting {
-  background-color: #f9f9f9;
-  max-width: 800px;
-  margin: 0 auto;
+    background-color: #f9f9f9;
+    width: 100%;
+    padding: 25vw;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin-bottom: 15vh;
 }
-
-.company_greeting h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-align: center;
+.company_greeting_subtitle {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-primary);
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
+    text-align: center;
 }
-
+.company_greeting_title {
+    font-size: 3rem;
+    margin-bottom: 5vh;
+    text-align: center;
+}
 .company_greeting p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
-
 .company_signature {
   margin-top: 2rem;
   text-align: right;
   font-weight: 700;
 }
-
-/*======== Company Profile Table ========*/
-.company_profile {
-  max-width: 1000px;
-  margin: 0 auto;
+.company_profile {    /*======== Company Profile Table ========*/
+    width: 50vw;
+    margin: 0 auto;
+    margin-bottom: 15vh;
 }
-
+.company_profile_subtitle {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-primary);
+    letter-spacing: 0.1em;
+    margin-bottom: 0;
+    text-align: center;
+}
+.company_profile_title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
 .company_profile table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1.5rem;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
 }
 
 .company_profile th,
 .company_profile td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
-  vertical-align: top;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    vertical-align: top;
 }
 
 .company_profile th {
-  background-color: #f1f1f1;
-  width: 20%;
-  font-weight: 700;
+    background-color: #f1f1f1;
+    width: 20%;
+    font-weight: 700;
 }
 
 .company_profile td ul {
-  list-style: disc inside;
-  padding-left: 1rem;
+    list-style: disc inside;
+    padding-left: 1rem;
 }
 
 
