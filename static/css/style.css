@@ -538,9 +538,113 @@ footer {
 
 
 
+/* 会社概要ページ */
+/*======== Lead Section ========*/
+.hero_company_section {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('../images/lead-bg.jpg') center/cover no-repeat;
+  padding: 100px 20px;
+  text-align: center;
+  color: #fff;
+}
 
+.hero_company_section .company_hero-title {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
 
+.hero_company_section p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
 
+/*======== Mission / Vision / Value Sections ========*/
+.company_mission,
+.company_vision,
+.company_value {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.company_mission h2,
+.company_vision h2,
+.company_value h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.company_mission p,
+.company_vision p,
+.company_value p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Value のキャッチフレーズ */
+.company_value .company_values {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/*======== Greeting Section ========*/
+.company_greeting {
+  background-color: #f9f9f9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.company_greeting h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.company_greeting p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.company_signature {
+  margin-top: 2rem;
+  text-align: right;
+  font-weight: 700;
+}
+
+/*======== Company Profile Table ========*/
+.company_profile {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.company_profile table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.company_profile th,
+.company_profile td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.company_profile th {
+  background-color: #f1f1f1;
+  width: 20%;
+  font-weight: 700;
+}
+
+.company_profile td ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
 
 
 
