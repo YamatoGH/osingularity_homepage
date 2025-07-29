@@ -21,9 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (!header) return;
 	setTimeout(() => {
 		header.classList.add('slide-down');
-	}, 8000);
+	}, 7000);
 });
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const logo = document.querySelector('.top_hero__logo');
+	const hero  = document.querySelector('.top_hero');
+
+	if (logo && hero) {
+		logo.addEventListener('animationend', (e) => {
+			// blackhole-cool アニメが終わったら wave を発火
+			if (e.animationName === 'blackhole-appear') {
+				hero.classList.add('wave');
+			}
+		});
+	}
+});
 
 
 
@@ -42,12 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		bgVideo.style.opacity = '1';
 	});
 
-	// 7秒後に再生をスタート
+
 	setTimeout(() => {
 		bgVideo.play().catch(err => {
 			console.warn('自動再生できませんでした:', err);
 		});
-	}, 7400);
+	}, 6000);
 });
 
 

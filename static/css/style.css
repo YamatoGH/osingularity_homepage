@@ -25,35 +25,7 @@ body {
     background-color: #fff;
 }
 
-/* — 共通レイアウト — */
-a {
-	color: var(--color-primary);
-	text-decoration: none;
-	transition: opacity 0.3s;
-}
-a:hover {
-	opacity: 0.8;
-}
-.btn-link {
-	font-weight: 600;
-	border-bottom: 2px solid transparent;
-	transition: border-color 0.3s;
-}
-.btn-link:hover {
-	border-color: var(--color-primary);
-}
-.btn-hero {
-    display: inline-block;
-    background-color: var(--color-primary);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    transition: opacity 0.3s;
-}
-.btn-hero:hover {
-    opacity: 0.9;
-}
+
 
 
 /* ローディングアニメーション */
@@ -222,7 +194,7 @@ footer {
     margin-bottom: 2rem;
     letter-spacing: .05em;
     animation:
-      typing 3s steps(18,end) 3s forwards,
+      typing 1.5s steps(18,end) 3s forwards,
       blink-caret .75s step-end infinite 3s;
     width: 21ch;                  /* テキスト長に合わせた幅 */
 }
@@ -244,7 +216,7 @@ footer {
     transform: scale(0) rotate(0deg);
     filter: blur(30px) brightness(0);
     box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
-    animation: blackhole-appear 1s ease-out 7s forwards;
+    animation: blackhole-appear 1s ease-out 5s forwards;
 }
 @keyframes blackhole-appear {
 	0% {
@@ -268,6 +240,37 @@ footer {
 		box-shadow:
 		0 0 0 rgba(255,255,255,0.5),    /* 下側のみの外側グロー */
 		inset 0 0 0 rgba(255,255,255,0.3); /* 下側のみの内側グロー */
+	}
+}
+.top_hero::after {    /* 波紋アニメーション */
+  z-index: 3;
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 400%;
+	height: 400%;
+	pointer-events: none;
+	background: radial-gradient(
+		circle at center,
+		rgba(255, 255, 255, 0.9) 0%,
+		rgba(255, 255, 255, 0.7) 30%,
+		transparent 80%
+	);
+	transform: translate(-50%, -50%) scale(0);
+	opacity: 0;
+}
+.top_hero.wave::after {    
+	animation: hero-wave 1s ease-out forwards;
+}
+@keyframes hero-wave {
+	from {
+		transform: translate(-50%, -50%) scale(0);
+		opacity: 1;
+	}
+	to {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 0;
 	}
 }
 .top_news {   /* — News Section — */
@@ -388,13 +391,21 @@ footer {
 }
 .top_service__item-text {
 	margin: 0 0 0.75rem;
+  margin-bottom: 10%;
 	color: var(--color-text);
 }
 .top_service__item-link {
-	text-decoration: none;
+	display: inline-block;              /* ボタンらしく */
+	padding: 0.1rem 0.75rem;            /* 上下・左右の余白 */
+	border-radius: 9000px;              /* 丸みを最大に */
+	background-color: var(--color-primary);     
+	color: #fff;                        
+	text-decoration: none;             
+	font-weight: 600;               
+	transition: background-color 0.3s ease;
 }
-.top_service__item-link:hover {
-	text-decoration: underline;
+.top_service__item-link:hover {   
+	background-color: #005A99;          /* ホバー時の濃い色 */
 }
 .top_service__list .top_service__item {    /* スクロール時フェードイン初期状態 */
 	opacity: 0;
