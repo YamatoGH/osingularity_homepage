@@ -158,29 +158,51 @@ footer {
 
 
 /* — Hero Section — */
+.top_header {
+	transform: translateY(-100%);
+}
+.top_header.slide-down {
+	transform: translateY(0);
+	transition: transform 0.6s ease-out;
+}
+.top_hero__bg-video {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	z-index: 1;     
+
+  /* 再生前は隠す */
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
 .top_hero {
     position: relative;
-    background: url("../images/top_hero_back_img.jpg") no-repeat center center;
+    top: -12vh;
     background-size: cover;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
+    background-color: black;
 }
 .top_hero::before {
+    z-index: 2;
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
     border-radius: var(--radius);
 }
 .top_hero > * {
@@ -189,13 +211,64 @@ footer {
     color: #fff;
     padding: 0 1rem;
 }
-.top_hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+.top_hero h2 {    /* タイプライター風 */
+    z-index: 3;
+    font-size: 3rem;
+    display: inline-block;
+    overflow: hidden;             /* はみ出し文字を隠す */
+    border-right: .15em solid #fff;  /* カーソルっぽい縦線 */
+    white-space: nowrap;          /* 折り返さない */
+    margin: 0 auto;               /* 中央寄せ */
+    margin-bottom: 2rem;
+    letter-spacing: .05em;
+    animation:
+      typing 3s steps(18,end) 3s forwards,
+      blink-caret .75s step-end infinite 3s;
+    width: 21ch;                  /* テキスト長に合わせた幅 */
 }
-.top_hero p {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+@keyframes typing {    /* 入力アニメーション */
+    from { width: 0; }
+    to { width: 21ch; }
+}
+@keyframes blink-caret {    /* カーソル点滅 */
+    from, to { border-color: transparent; }
+    50%     { border-color: #fff; }
+}
+.top_hero__logo {
+  z-index: 3;
+    width: 400px;                /* ロゴの幅 */
+    height: auto;               /* 高さは自動調整 */
+    margin-left: 500px;
+
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    filter: blur(30px) brightness(0);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+    animation: blackhole-appear 1s ease-out 7s forwards;
+}
+@keyframes blackhole-appear {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+		filter: blur(30px) brightness(0);
+		box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.1);
+		filter: blur(10px) brightness(50);
+		box-shadow:
+			0 0 80px rgba(255,255,255,0.8),
+			inset 0 0 60px rgba(255,255,255,0.4);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+		filter: blur(0) brightness(1.2);
+		box-shadow:
+		0 0 0 rgba(255,255,255,0.5),    /* 下側のみの外側グロー */
+		inset 0 0 0 rgba(255,255,255,0.3); /* 下側のみの内側グロー */
+	}
 }
 .top_news {   /* — News Section — */
     background-color: rgb(240, 240, 240);
@@ -323,11 +396,19 @@ footer {
 .top_service__item-link:hover {
 	text-decoration: underline;
 }
-
-
-
-/* ── Strength セクション ── */
-.top_strength {
+.top_service__list .top_service__item {    /* スクロール時フェードイン初期状態 */
+	opacity: 0;
+	transform: translateX(-50px);
+	transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+.top_service__list .top_service__item:nth-child(even) {    /* 偶数番目は右からフェードイン */
+	transform: translateX(50px);
+}
+.top_service__list .top_service__item.in-view {    /* in-view クラスで表示 */
+	opacity: 1;
+	transform: translateX(0);
+}
+.top_strength {    /* ── Strength セクション ── */
   margin-top: 15vh;
   padding-top: 7rem;
   background: linear-gradient(black, white);
@@ -418,11 +499,6 @@ footer {
 .sphere-text h3 { font-size: 1.1rem; margin: 0; }
 .sphere-text h4 { font-size: 1rem; margin: 0.5rem 0; }
 .sphere-text p  { font-size: 0.9rem; margin: 0; }
-
-
-
-
-
 .top_company {    /* ── Company Section ── */
 	position: relative;
 	width: 80vw;
@@ -772,6 +848,20 @@ footer {
 .oboard_land_benefit > .oboard_land_benefit_card_list > .oboard_land_benefit_card:nth-child(2) {
 	flex-direction: row-reverse;
 }
+.oboard_land_benefit .oboard_land_benefit_card_list .oboard_land_benefit_card {
+  /* — 利活用者のメリット：フェードイン初期状態 — */
+	opacity: 0;    /* 左右どちらからか設定：奇数は左、偶数は右 */
+	transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+	transform: translateX(-50px);
+}
+.oboard_land_benefit .oboard_land_benefit_card_list .oboard_land_benefit_card:nth-child(even) {
+	transform: translateX(50px);
+}
+.oboard_land_benefit .oboard_land_benefit_card_list .oboard_land_benefit_card.in-view {
+	opacity: 1;    /* — ビューポートに入ったらリセット — */
+	transform: translateX(0);
+}
+
 
 /* --- レスポンシブ対応 --- */
 @media (max-width: 768px) {
