@@ -672,3 +672,120 @@ footer {
 
 
 
+/* oboardランディングページ */
+.oboard_land_hero {    /* --- ヒーロー画面 --- */
+	background: url('../images/top_hero_back_img.jpg') no-repeat center/cover;
+	color: #fff;
+	text-align: center;
+	padding: 15vh 5vw;
+}
+.oboard_land_hero h2 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+.oboard_land_hero p {
+	font-size: 1.5rem;
+}
+.oboard_land_features {    /* --- Oboardができること --- */
+	padding: 8vh 5vw;
+	text-align: center;
+  background-color: #eaf9ff;
+
+  margin-bottom: 15vh;
+}
+.oboard_land_features h3 {
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
+.oboard_land_feature_grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: center;
+}
+.oboard_land_feature_grid .oboard_land_card {
+	flex: 1 1 calc(33% - 2rem);
+	max-width: 300px;
+	text-align: left;
+}
+.oboard_land_feature_grid .oboard_land_card img {
+	width: 100%;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+}
+.oboard_land_feature_grid .oboard_land_card h4 {
+	font-size: 1.25rem;
+	margin-bottom: 0.5rem;
+}
+.oboard_land_feature_grid .oboard_land_card p {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: #555;
+}
+.oboard_land_benefit {    /* --- 以下、利活用者のメリット --- */
+    margin: 0 auto;  
+    margin-bottom: 15vh;
+    width: 80vw;
+}
+.oboard_land_benefit_title {    
+  font-size: 2rem;
+  margin-bottom: 5vh;
+  text-align: center;
+}
+.oboard_land_benefit > .oboard_land_benefit_card_list {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: center;
+}
+.oboard_land_benefit_card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+.oboard_land_benefit_card img {
+	width: 50%;
+  height: 100%;
+	flex-shrink: 0;
+}
+.oboard_land_benefit_card-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+  margin: 20px;
+}
+.oboard_land_benefit_card-content h4 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+.oboard_land_benefit_card-content p {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: #555;
+}
+.oboard_land_benefit > .oboard_land_benefit_card_list > .oboard_land_benefit_card:nth-child(2) {
+	flex-direction: row-reverse;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 768px) {
+	/* feature セクション内のカード幅調整 */
+	.oboard_land_feature_grid .oboard_land_card {
+		flex: 1 1 100%;
+	}
+
+	/* benefit カードを縦並びに戻す */
+	.oboard_land_benefits .oboard_land_benefit_card .oboard_land_benefit_card {
+		flex-direction: column;
+	}
+	.oboard_land_benefits .oboard_land_benefit_card .oboard_land_benefit_card img {
+		width: 100%;
+		height: auto;
+	}
+}
