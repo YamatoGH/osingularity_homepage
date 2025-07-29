@@ -59,6 +59,9 @@ body {
 /* — ヘッダー — */
 header {
     position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     top: 0;
   	left: 0;
     background-color: var(--color-bg);
@@ -68,27 +71,47 @@ header {
     width: 100%;
     z-index: 9000;
 }
-header h1 {
-    font-size: 1.75rem;
+header img {
+    width: 20%;
+    margin-left: 5%;
     color: var(--color-header);
     margin-bottom: 0.5rem;
+}
+nav {
+  position: relative;
+  margin-right: 5%;
+}
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: left 0.5s ease, width 0.3s ease;
+  left: 0;
+  width: 0;
 }
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: var(--spacing);
+    gap: 0;
 }
 nav a {
     color: var(--color-header);
     font-weight: 500;
     padding: 0.25rem var(--spacing);
-    border-radius: var(--radius);
+
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 nav a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--color-primary);
+    color: #ffffff;
 }
+nav a.active {
+  padding-bottom: 0.1rem;
+}
+
 
 /* — フッター — */
 footer {

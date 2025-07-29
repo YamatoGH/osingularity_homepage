@@ -26,6 +26,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+// ヘッダーにページ読み込み後に現在ページのリンクに .active を付与
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('nav a');
+  const path = window.location.pathname;   // 例: '/company.html' や '/index.html'
+  const hash = window.location.hash;       // 例: '#contact'
+
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+
+    // 会社概要ページ
+    if (href === './company.html' && path.endsWith('company.html')) {
+      link.classList.add('active');
+    }
+    // お問い合わせアンカー
+    else if (href === '#contact' && hash === '#contact') {
+      link.classList.add('active');
+    }
+    // それ以外（トップページ）
+    else if (href === '#top' && (!hash || hash === '' || hash === '#top')) {
+      link.classList.add('active');
+    }
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('nav');
+  const indicator = document.querySelector('.nav-indicator');
+  const links = document.querySelectorAll('nav a');
+
+  function moveIndicator() {
+    // まず active クラスは既存のロジックで付いている前提
+    const active = document.querySelector('nav a.active');
+    if (!active) {
+      indicator.style.width = '0';
+      return;
+    }
+    const rect = active.getBoundingClientRect();
+    const navRect = nav.getBoundingClientRect();
+    // nav 内でのオフセットを計算
+    const left = rect.left - navRect.left;
+    const width = rect.width;
+    indicator.style.left = `${left}px`;
+    indicator.style.width = `${width}px`;
+  }
+
+  // ページ読み込み時
+  moveIndicator();
+  // 画面幅が変わったときも再計算
+  window.addEventListener('resize', moveIndicator);
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 	const logo = document.querySelector('.top_hero__logo');
 	const hero  = document.querySelector('.top_hero');
