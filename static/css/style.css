@@ -140,7 +140,7 @@ footer {
 .top_hero__bg-video {
 	position: absolute;
 	top: 0;
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	object-fit: cover;
 	z-index: 1;     
@@ -444,15 +444,18 @@ footer {
 }
 .top_strength_flex-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: var(--main_padding);
+  gap: 5rem;
   color: #fff;
   overflow: hidden;
 }
 .top_strength__description {
   font-size: 1.5rem;
+  font-weight: 800;
   top: -10rem;
+  left: 10%;
   position: relative;
 }
 .carousel {
@@ -461,6 +464,7 @@ footer {
   height: 400px;
   perspective: 1000px;
   top: -10rem;
+
   position: relative;
 }
 .carousel-inner {
@@ -471,7 +475,7 @@ footer {
 }
 .carousel-item {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform-style: preserve-3d;
   transition: transform 1s ease-in-out;
@@ -480,8 +484,8 @@ footer {
 .carousel-item.sphere_1,
 .carousel-item.sphere_2,
 .carousel-item.sphere_3 {
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   margin: 0; /* translate で中央寄せするので不要 */
   border-radius: 50%;
   box-shadow:

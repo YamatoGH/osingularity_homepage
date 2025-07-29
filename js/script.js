@@ -107,7 +107,7 @@ function updateCarousel() {
 
 function startCarousel() {
   clearInterval(carouselInterval);
-  carouselInterval = setInterval(updateCarousel, 3000);
+  carouselInterval = setInterval(updateCarousel, 7000);  // 7秒ごとに更新
 }
 
 function stopCarousel() {
