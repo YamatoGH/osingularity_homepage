@@ -170,46 +170,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// 強みの回転する玉
+// ── “Strength” セクションの 3D 回転する玉 ──
 const items = document.querySelectorAll('.carousel-item');
 const total = items.length;
-const radius = 200; // 奥行きの半径(px)
-let currentIndex = 0;
-let carouselInterval;  // ← ここで interval ID を保持
 
+let radius;
+// 画面幅に応じて回転半径を動的に設定
+function updateRadius() {
+  const w = window.innerWidth;
+  if (w < 480) {
+    radius = 100;
+  } else if (w < 768) {
+    radius = 150;
+  } else {
+    radius = 200;
+  }
+}
+// 初期計算＆リサイズ時にも再設定
+updateRadius();
+window.addEventListener("resize", () => {
+  updateRadius();
+  updateCarousel();
+});
+
+let currentIndex    = 0;
+let carouselInterval;
+
+// カルーセルの位置を更新
 function updateCarousel() {
   const angleStep = (2 * Math.PI) / total;
   for (let i = 0; i < total; i++) {
     const baseAngle = i * angleStep;
     const currAngle = currentIndex * angleStep;
-    const angle = baseAngle - currAngle;
-    const x = Math.sin(angle) * radius;
-    const z = Math.cos(angle) * radius;
-    items[i].style.transform = 
+    const angle     = baseAngle - currAngle;
+    const x         = Math.sin(angle) * radius;
+    const z         = Math.cos(angle) * radius;
+    items[i].style.transform =
       `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px)`;
     items[i].style.zIndex = Math.round(z + radius);
   }
   currentIndex = (currentIndex + 1) % total;
 }
 
+// 自動再生ループを開始
 function startCarousel() {
   clearInterval(carouselInterval);
-  carouselInterval = setInterval(updateCarousel, 7000);  // 7秒ごとに更新
+  carouselInterval = setInterval(updateCarousel, 5000);
 }
-
-function stopCarousel() {
-  clearInterval(carouselInterval);
-}
-
-// ── ホバーで停止／再開 ──
-items.forEach(item => {
-  item.addEventListener('mouseenter', stopCarousel);
-  item.addEventListener('mouseleave', startCarousel);
-});
-
-// 初期表示＋タイマー開始
-updateCarousel();
 startCarousel();
+
 
 
 // oboard_land_benefitのカードがスクロールで横からフェードインで表示されるようにする
@@ -232,3 +241,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+// 会社概要ページのMVVのフェードイン
+document.addEventListener('DOMContentLoaded', () => {
+  const mvvSections = document.querySelectorAll(
+    '.company_mission, .company_vision, .company_value'
+  );
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  mvvSections.forEach(sec => observer.observe(sec));
+});
