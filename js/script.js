@@ -82,8 +82,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
+// ── ハンバーガーメニューの開閉 ──
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navList   = document.querySelector('.nav-list');
 
-
+   hamburger.addEventListener('click', () => {
+     // ボタンの見た目切り替え（× ↔ 三本線）
+     hamburger.classList.toggle('open');
+     // メニューのスライドイン／アウト
+     navList.classList.toggle('open');
+   });
+  });
 
 
 

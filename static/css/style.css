@@ -1,4 +1,9 @@
 /* — リセット＆基本設定 — */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -111,7 +116,80 @@ nav a:hover {
 nav a.active {
   padding-bottom: 0.1rem;
 }
+.hamburger {     /* ── ハンバーガーアイコン ── */
+  display: none;            /* デフォルトは非表示 */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+  z-index: 10002; 
+}
+.hamburger span {
+  width: 100%;
+  display: block;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+  z-index: 10002;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+@media (max-width: 768px) {
+.hamburger {
+    display: flex;
+}
+  .nav-list {
+    /* 画面全体に広げる */
+    position: fixed;
+    top: 12vh;                       /* ヘッダー下から */
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    /* 背景色・重なり順 */
+    background-color: #fff;
+    z-index: 10001;
 
+    /* 縦並び中央寄せ */
+    display: flex;            /* 初期は非表示 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* 右方向へオフスクリーン */
+    transform: translateX(100%);
+    transition: transform 1s ease;
+  }
+  .nav-list.open {
+    transform: translateX(0vw);
+    display: flex;
+  }
+  .nav-list li {
+    margin: 1rem 0;          /* 項目間に余白 */
+  }
+  .nav-list li a {
+    font-size: 1.5rem;       /* 大きめ文字でタップしやすく */
+    padding: 0.5rem 1rem;
+  }
+  
+}
 
 /* — フッター — */
 footer {
