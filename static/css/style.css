@@ -155,10 +155,10 @@ footer {
 /* — Hero Section — */
 .top_header {
 	transform: translateY(-100%);
+  transition: transform 0.6s ease-out;
 }
 .top_header.slide-down {
 	transform: translateY(0);
-	transition: transform 0.6s ease-out;
 }
 .top_hero__bg-video {
 	position: absolute;
@@ -207,6 +207,7 @@ footer {
     padding: 0 1rem;
 }
 .top_hero h2 {    /* タイプライター風 */
+    width: 0;
     z-index: 3;
     font-size: 3rem;
     display: inline-block;
@@ -216,10 +217,11 @@ footer {
     margin: 0 auto;               /* 中央寄せ */
     margin-bottom: 2rem;
     letter-spacing: .05em;
-    animation:
-      typing 1.5s steps(18,end) 3s forwards,
-      blink-caret .75s step-end infinite 3s;
-    width: 21ch;                  /* テキスト長に合わせた幅 */
+}
+.top_hero h2.typing {
+	animation:
+		typing 1.5s steps(18,end) forwards,
+		blink-caret .75s step-end infinite;
 }
 @keyframes typing {    /* 入力アニメーション */
     from { width: 0; }
@@ -228,6 +230,13 @@ footer {
 @keyframes blink-caret {    /* カーソル点滅 */
     from, to { border-color: transparent; }
     50%     { border-color: #fff; }
+}
+.top_hero h2.typing-end {
+	width: auto !important;              /* 全テキストを表示 */
+	overflow: visible !important;
+	white-space: nowrap;
+	border-right: .15em solid #fff;      /* カーソル再現 */
+	animation: blink-caret .75s step-end infinite; /* カーソル点滅 */
 }
 .top_hero__logo {
   z-index: 3;
@@ -239,7 +248,9 @@ footer {
     transform: scale(0) rotate(0deg);
     filter: blur(30px) brightness(0);
     box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
-    animation: blackhole-appear 1s ease-out 5s forwards;
+}
+.top_hero__logo.blackhole-appear {
+	animation: blackhole-appear 1s ease-out forwards;
 }
 @keyframes blackhole-appear {
 	0% {
@@ -261,9 +272,16 @@ footer {
 		transform: scale(1);
 		filter: blur(0) brightness(1.2);
 		box-shadow:
-		0 0 0 rgba(255,255,255,0.5),    /* 下側のみの外側グロー */
-		inset 0 0 0 rgba(255,255,255,0.3); /* 下側のみの内側グロー */
+		0 0 0 rgba(255,255,255,0.5),  
+		inset 0 0 0 rgba(255,255,255,0.3);
 	}
+}
+.top_hero__logo.blackhole-end {
+	opacity: 1 !important;               /* 完全に表示 */
+	transform: scale(1) !important;      /* 元の大きさ */
+	filter: none !important;             /* ブラー／明るさ調整をリセット */
+	box-shadow: none !important;         /* 光彩シャドウをリセット */
+	transition: none !important;         /* アニメーション遷移をキャンセル */
 }
 .top_hero::after {    /* 波紋アニメーション */
   z-index: 3;

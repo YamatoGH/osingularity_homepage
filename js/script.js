@@ -1,28 +1,88 @@
-// ロゴ動画が終わったらローディング画面を消す
 window.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById("logo-video");
-  const loader = document.getElementById("logo-loader");
+	const loader   = document.getElementById("logo-loader");
+	const logoVid  = document.getElementById("logo-video");
+	const title    = document.querySelector(".top_hero h2");
+	const logo     = document.querySelector(".top_hero__logo");
+	const header   = document.querySelector(".top_header");
+	const hero     = document.querySelector(".top_hero");
+	const bgVideo  = document.querySelector(".top_hero__bg-video");
 
-  if (video) {
-    video.addEventListener("ended", () => {
-      loader.style.transition = "opacity 1s";
-      loader.style.opacity = "0";
-      setTimeout(() => {
-        loader.style.display = "none";
-      }, 1000);
-    });
-  }
+	// ── アニメ開始までの遅延（秒） ──
+	const delays = {
+		typewriter:  0,    // 0秒後にタイプライター
+		logo:        1.5,  // 1.5秒後にロゴ
+		header:      3,  // 3秒後にヘッダー
+		wave:        2.5,  // 2.5秒後に波紋
+		bgVideoPlay: 2.6   // 2.6秒後に背景動画再生
+	};
+
+	function startAnimations() {
+		// 1) ローダーをフェードアウト
+		if (loader) {
+			loader.style.transition = "opacity 1s";
+			loader.style.opacity    = "0";
+			setTimeout(() => loader.style.display = "none", 1000);
+		}
+
+		// 2) タイプライター
+		if (title) {
+			setTimeout(() => title.classList.add("typing"), delays.typewriter * 1000);
+		}
+
+		// 3) ロゴ
+		if (logo) {
+			setTimeout(() => logo.classList.add("blackhole-appear"), delays.logo * 1000);
+		}
+
+		// 4) ヘッダー降下
+		if (header) {
+			setTimeout(() => header.classList.add("slide-down"), delays.header * 1000);
+		}
+
+		// 5) 波紋エフェクト
+		if (hero) {
+			setTimeout(() => hero.classList.add("wave"), delays.wave * 1000);
+		}
+
+		// 6) 背景動画再生
+		if (bgVideo) {
+			setTimeout(() => {
+				bgVideo.style.visibility = "visible";
+				bgVideo.style.opacity    = "1";
+				bgVideo.play().catch(() => {});
+			}, delays.bgVideoPlay * 1000);
+		}
+	}
+
+	// ── 初回のみ、動画終了をトリガーにアニメ開始 ──
+	if (!localStorage.getItem("hasVisited")) {
+		localStorage.setItem("hasVisited", "true");
+		if (logoVid) {
+			logoVid.play().catch(() => {});
+			logoVid.addEventListener("ended", startAnimations);
+		} else {
+			startAnimations();
+		}
+	} else {
+		// 再訪時は即時最終状態で
+		if (loader)  loader.style.display = "none";
+		if (title)   title.classList.add("typing-end");
+		if (logo)    logo.classList.add("blackhole-end");
+		if (header)  header.classList.add("slide-down");
+		if (hero)    hero.classList.add("wave");
+		if (bgVideo) {
+			bgVideo.style.visibility = "visible";
+			bgVideo.style.opacity    = "1";
+			bgVideo.play().catch(() => {});
+		}
+	}
 });
 
 
-// トップページのヘッダーのスライドダウン
-document.addEventListener('DOMContentLoaded', () => {
-	const header = document.querySelector('.top_header');
-	if (!header) return;
-	setTimeout(() => {
-		header.classList.add('slide-down');
-	}, 7000);
-});
+
+
+
+
 
 
 
@@ -81,44 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-	const logo = document.querySelector('.top_hero__logo');
-	const hero  = document.querySelector('.top_hero');
-
-	if (logo && hero) {
-		logo.addEventListener('animationend', (e) => {
-			// blackhole-cool アニメが終わったら wave を発火
-			if (e.animationName === 'blackhole-appear') {
-				hero.classList.add('wave');
-			}
-		});
-	}
-});
-
-
-
-// ヒーローセクションの動画をアイコン表示後に表示&再生 
-document.addEventListener('DOMContentLoaded', () => {
-	const bgVideo = document.querySelector('.top_hero__bg-video');
-
-	// 確実に一旦停止＆隠しておく
-	bgVideo.pause();
-	bgVideo.style.visibility = 'hidden';
-	bgVideo.style.opacity = '0';
-
-	// 動画が再生を始めたらフェードイン表示
-	bgVideo.addEventListener('playing', () => {
-		bgVideo.style.visibility = 'visible';
-		bgVideo.style.opacity = '1';
-	});
-
-
-	setTimeout(() => {
-		bgVideo.play().catch(err => {
-			console.warn('自動再生できませんでした:', err);
-		});
-	}, 6000);
-});
 
 
 
