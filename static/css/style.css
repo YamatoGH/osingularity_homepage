@@ -156,6 +156,7 @@ nav a.active {
   header img {
     width: 30% !important;
   }
+  
 }
 @media (max-width: 768px) {
   header img {
@@ -163,16 +164,12 @@ nav a.active {
     margin-left: 3% !important;
   }
 }
-
-/* スマホ（480px以下） */
 @media (max-width: 480px) {
   header img {
     width: 50% !important;
     margin-left: 2% !important;
   }
 }
-
-/* 超小型スマホ（360px以下） */
 @media (max-width: 360px) {
   header img {
     width: 50% !important;
@@ -218,42 +215,95 @@ nav a.active {
   
 }
 
-/* — フッター — */
-footer {
-	background-color: #eaf9ff;
-	padding: var(--spacing);
-	text-align: center;
+/* — フッター全体 — */
+.site-footer {
+  background-color: #292929;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;          /* 横縮小を防止 */
+}
+.footer-logo {
+  height: 40px;             /* 高さだけ固定 */
+  width: auto;              /* アスペクト比を維持 */
+  flex-shrink: 0;           /* flexで潰れない */ 
+  margin-right: 0.75rem;
+}
+.footer-company {
+  font-weight: bold;
+  color: #fff;
+}
+.footer-nav {
+  flex: 1;                  /* 左右を開けて中央寄せ */
+  text-align: center;
+  flex-wrap: nowrap; 
+  margin-right: 22%;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: nowrap; 
+  margin: 0;
+  padding: 0;
+}
+.footer-links li {
+  flex: 0 0 auto !important;     /* 子要素を潰さない */
+}
+.footer-links a {
+  color: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.footer-links a:hover {
+  opacity: 0.7;
+}
+.footer-copy {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0.75rem 0;
+  font-size: 0.8rem;
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;           /* 縦並びに切り替え */
+    align-items: center;
+    text-align: center;
+  }
+  .footer-logo {
+    margin-right: 20%;
+  }
+  .footer-brand,
+  .footer-nav {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .footer-links {
+    flex-direction: column;           /* リンクも縦並び */
+    gap: 0.75rem;
+  }
 }
 
-.footer-inner {
-	max-width: 960px;
-	margin: 0 auto;
-}
 
-.footer-text {
-	font-size: 0.875rem;
-	color: var(--color-text);
-	margin-bottom: var(--spacing);
-}
 
-.footer-list {
-	list-style: none;
-	padding: 0;
-	margin: 0 auto;
-	display: flex;
-	justify-content: center;
-	gap: var(--spacing);
-}
 
-.footer-link {
-	color: var(--color-text);
-	text-decoration: none;
-	transition: opacity 0.3s;
-}
-
-.footer-link:hover {
-	opacity: 0.8;
-}
 
 
 
@@ -1076,9 +1126,6 @@ footer {
     max-width: 400px !important;            /* 最大幅を設定 */
   }
 }
-/* 元のセクション定義 :contentReference[oaicite:2]{index=2} */
-/* 元のリンク定義 :contentReference[oaicite:3]{index=3} */
-
 @media (max-width: 480px) {
   .top_contact {
     margin: 8vh auto !important;            /* さらに上下マージンを縮小 */
@@ -1191,10 +1238,9 @@ footer {
   text-align: right;
   font-weight: 700;
 }
-.company_profile {    /*======== Company Profile Table ========*/
-    width: 50vw;
-    margin: 0 auto;
-    margin-bottom: 15vh;
+.company_profile {
+  width: 70vw;
+  margin: 0 auto 15vh;
 }
 .company_profile_subtitle {
     display: block;
@@ -1206,32 +1252,74 @@ footer {
 }
 .company_profile_title {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 5vh;
     text-align: center;
 }
-.company_profile table {
+.company_profile table.profile-table {
+  width: 100%;
+  border-collapse: collapse; /* 元の collapse */
+}
+.company_profile table.profile-table th {
+  width: 20%;
+  background-color: #f9f9f9;
+}
+.company_profile table.profile-table th,
+.company_profile table.profile-table td {
+  border: 1px solid #a3a3a3;              /* 罫線を完全に消す */
+  padding: 0.75rem;
+  vertical-align: top;
+}
+.company_profile table.profile-table td ul {
+    list-style-position: inside;   /* 点を内側に */
+    padding-left: 1em;            /* 左余白を追加 */
+    margin-top: 0.5em;            /* 上マージンで見た目を整える */
+}
+@media (max-width: 600px) {
+  /* セクション幅をフル幅に */
+  .company_profile {
+    width: 90vw;          /* 画面の90%を使う */
+    margin: 0 auto 2rem;  /* 下マージンは適宜調整 */
+    padding: 0 1rem;      /* 横パディングで余白を確保 */
+  }
+
+  /* <th>を完全に消して、<td>だけをカード化 */
+  .company_profile table.profile-table th {
+    display: none;
+  }
+
+  /* 既存のテーブル→ブロックに切り替え */
+  .company_profile table.profile-table,
+  .company_profile table.profile-table tbody,
+  .company_profile table.profile-table tr,
+  .company_profile table.profile-table td {
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-}
+  }
 
-.company_profile th,
-.company_profile td {
-    border: 1px solid #ddd;
+  /* １レコードずつカード化 */
+  .company_profile table.profile-table tr {
+    margin-bottom: 1em;
+    background: #f9f9f9;
+    border-radius: 4px;
     padding: 0.75rem;
-    vertical-align: top;
-}
+  }
 
-.company_profile th {
-    background-color: #f1f1f1;
-    width: 20%;
+  /* ラベルを ::before で表示 */
+  .company_profile table.profile-table td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+  .company_profile table.profile-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
     font-weight: 700;
+    white-space: nowrap;
+  }
 }
 
-.company_profile td ul {
-    list-style: disc inside;
-    padding-left: 1rem;
-}
 
 
 

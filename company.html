@@ -18,8 +18,13 @@
 
   <header>
     <img src="./static/images/OSINGULARITY_header_logo.png" alt="O.SINGULARITY Logo" >
+    <button class="hamburger" aria-label="メニュー開閉">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
-      <ul>
+      <ul class="nav-list">
         <li><a href="./index.html">トップページ</a></li>
         <li><a href="./company.html">会社概要</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
@@ -79,38 +84,38 @@
       <small class="company_profile_subtitle">COMPANY PROFILE</small>
       <h2 class="company_profile_title">会社概要</h2>
     </div>
-    <table>
+    <table class="profile-table">
       <tr>
         <th>会社名</th>
-        <td>株式会社O.SINGULARITY</td>
+        <td data-label="会社名">株式会社O.SINGULARITY</td>
       </tr>
       <tr>
         <th>英文社名</th>
-        <td>O.SINGULARITY Co. Ltd.</td>
+        <td data-label="英文社名">O.SINGULARITY Co. Ltd.</td>
       </tr>
       <tr>
         <th>代表取締役</th>
-        <td>竹内 大和</td>
+        <td data-label="代表取締役">竹内 大和</td>
       </tr>
       <tr>
         <th>従業員数</th>
-        <td>3名</td>
+        <td data-label="従業員数">3名</td>
       </tr>
       <tr>
         <th>所在地</th>
-        <td>滋賀県彦根市馬場1丁目</td>
+        <td data-label="所在地">滋賀県彦根市馬場1丁目</td>
       </tr>
       <tr>
         <th>TEL</th>
-        <td>080-9604-0425</td>
+        <td data-label="TEL">080-9604-0425</td>
       </tr>
       <tr>
         <th>FAX</th>
-        <td>—</td>
+        <td data-label="FAX">—</td>
       </tr>
       <tr>
         <th>事業内容</th>
-        <td>
+        <td data-label="事業内容">
           <ul>
             <li>デジタルトランスフォーメーション（DX）の推進およびそれに関するコンサルティング業務</li>
             <li>人工知能（AI）を活用した各種業務支援システム、分析ツール、チャットボット、画像認識・音声認識システム等の企画、開発、販売および導入・運用支援</li>
@@ -133,17 +138,36 @@
     </table>
   </section>
 
-  <footer>
-    <div class="footer-inner">
-      <p class="footer-text">© 2025 O.SINGULARITY, Inc. All Rights Reserved.</p>
+
+
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- 左端：ブランドロゴ＋社名 -->
+      <div class="footer-brand">
+        <img
+          src="./static/images/OSINGULARITY_header_logo_white.png"
+          alt="O.SINGULARITY Logo"
+          class="footer-logo"
+        >
+      </div>
+
+      <!-- 中央：ページリンク -->
       <nav class="footer-nav">
-        <ul class="footer-list">
-          <li><a href="/" class="footer-link">Home</a></li>
-          <li><a href="#company" class="footer-link">Company</a></li>
-          <li><a href="#contact" class="footer-link">Contact</a></li>
+        <ul class="footer-links">
+          <li><a href="./index.html">トップ</a></li>
+          <li><a href="#service">事業内容</a></li>
+          <li><a href="#company">会社概要</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
         </ul>
       </nav>
     </div>
+
+    <!-- コピーライト（全幅表示） -->
+    <p class="footer-copy">
+      © 2025 株式会社O.SINGULARITY. All Rights Reserved.
+    </p>
   </footer>
 
 </body>
