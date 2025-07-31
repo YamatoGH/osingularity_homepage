@@ -175,7 +175,10 @@ const items = document.querySelectorAll('.carousel-item');
 const total = items.length;
 
 let radius;
-// 画面幅に応じて回転半径を動的に設定
+/**
+ * 画面幅に応じて回転半径を動的に設定
+ * （元の updateRadius）:contentReference[oaicite:4]{index=4}
+ */
 function updateRadius() {
   const w = window.innerWidth;
   if (w < 480) {
@@ -186,38 +189,56 @@ function updateRadius() {
     radius = 200;
   }
 }
-// 初期計算＆リサイズ時にも再設定
+// 初期計算
 updateRadius();
+
+/**
+ * リサイズ時は「位置だけ再計算」してインデックスは進めない
+ * ここを updateCarousel から repositionCarousel 呼び出しに変更 :contentReference[oaicite:5]{index=5}
+ */
 window.addEventListener("resize", () => {
   updateRadius();
-  updateCarousel();
+  repositionCarousel();
 });
 
-let currentIndex    = 0;
+let currentIndex = 0;
 let carouselInterval;
 
-// カルーセルの位置を更新
-function updateCarousel() {
+/**
+ * ① 位置再計算のみ行う関数（インデックスは進めない）
+ */
+function repositionCarousel() {
   const angleStep = (2 * Math.PI) / total;
   for (let i = 0; i < total; i++) {
     const baseAngle = i * angleStep;
-    const currAngle = currentIndex * angleStep;
-    const angle     = baseAngle - currAngle;
+    const angle     = baseAngle - currentIndex * angleStep;
     const x         = Math.sin(angle) * radius;
     const z         = Math.cos(angle) * radius;
     items[i].style.transform =
       `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px)`;
     items[i].style.zIndex = Math.round(z + radius);
   }
+}
+
+/**
+ * ② オートスライド用：位置再計算＋インデックス進行
+ * （元の updateCarousel）:contentReference[oaicite:6]{index=6}
+ */
+function updateCarousel() {
+  repositionCarousel();
   currentIndex = (currentIndex + 1) % total;
 }
 
-// 自動再生ループを開始
+/**
+ * ③ 自動再生ループを開始
+ * （元の startCarousel）:contentReference[oaicite:7]{index=7}
+ */
 function startCarousel() {
   clearInterval(carouselInterval);
   carouselInterval = setInterval(updateCarousel, 5000);
 }
 startCarousel();
+
 
 
 
