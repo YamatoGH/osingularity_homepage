@@ -38,7 +38,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: white;
   display: flex;
@@ -220,6 +220,7 @@ nav a.active {
   background-color: #292929;
   color: #ffffff;
   font-size: 0.9rem;
+  overflow-x: hidden;
 }
 .footer-container {
   max-width: 1200px;
@@ -237,8 +238,8 @@ nav a.active {
   flex: 0 0 auto;          /* 横縮小を防止 */
 }
 .footer-logo {
-  height: 40px;             /* 高さだけ固定 */
-  width: auto;              /* アスペクト比を維持 */
+  height: auto;           
+  max-width: 100%;
   flex-shrink: 0;           /* flexで潰れない */ 
   margin-right: 0.75rem;
 }
@@ -287,9 +288,12 @@ nav a.active {
     text-align: center;
   }
   .footer-logo {
-    margin-right: 20%;
+    margin-right: 0;
+    max-width: 30%;
   }
-  .footer-brand,
+  .footer-brand {
+    width: 100%;
+  }
   .footer-nav {
     width: 100%;
     justify-content: center;
@@ -598,7 +602,6 @@ nav a.active {
     font-size: 0.9rem;            /* ボタン文字も小さく */
   }
 }
-
 .top_service {    /* ── Service Section ── */
 	padding: var(--spacing);
 }
@@ -848,8 +851,8 @@ nav a.active {
   display: flex !important;
   flex-direction: column !important;   /* 横並びを解除 */
   align-items: center !important;      /* 中央揃え */
-  gap: 5rem !important;                /* 元の gap:5rem を維持 */
-  padding: var(--main_padding) 1rem !important;
+  gap: 5rem;                /* 元の gap:5rem を維持 */
+  padding: var(--main_padding) 1rem ;
   overflow: visible !important;        /* 元の overflow:hidden を解除 */
 }
 .top_strength_flex-wrap .carousel {
@@ -885,8 +888,8 @@ nav a.active {
   .top_strength_flex-wrap {
     flex-direction: column;       /* 縦並びに切替 */
     gap: 2rem;                    /* 項目間隔を詰める */
-    padding: var(--main_padding) 1rem;
-    padding-top: 10%;
+    padding: 7rem 1rem;
+    padding-top: 20%;
   }
   .top_strength__summery {
     width: 100%;                  /* 見出しをフル幅に */
@@ -920,9 +923,10 @@ nav a.active {
     font-size: 2rem;              /* タイトル縮小 */
   }
   .top_strength_flex-wrap {
-    gap: 1.5rem;
+    gap: 0rem;
   }
   .carousel {
+    top: -20rem !important;
     width: 80vw;                  /* スマホでは80%に */
     height: 80vw;
   }
