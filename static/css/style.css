@@ -740,7 +740,6 @@ nav a.active {
     min-height: auto;
     max-height: none;
   }
-
   .top_service__item.is_reverse {
     flex-direction: column;
     align-items: center
@@ -911,9 +910,9 @@ nav a.active {
     width: 180px !important;  /* 260px → 180px に縮小 */
     height: 180px !important;
   }
-  .sphere-text h3 { font-size: 1rem; margin: 0; }
-  .sphere-text h4 { font-size: 0.8rem; margin: 0.1rem 0; }
-  .sphere-text p  { font-size: 0.7rem; margin: 0; }
+  .sphere-text h3 { font-size: 1.1rem; margin: 0; }
+  .sphere-text h4 { font-size: 1rem; margin: 0.1rem 0; }
+  .sphere-text p  { font-size: 0.8rem; margin: 0; }
 }
 @media (max-width: 480px) {
   .top_strength {
@@ -939,9 +938,9 @@ nav a.active {
     width: 140px !important;  /* さらにスマホ用に縮小 */
     height: 140px !important;
   }
-  .sphere-text h3 { font-size: 0.9rem; margin: 0; }
-  .sphere-text h4 { font-size: 0.7rem; margin: 0.1rem 0; }
-  .sphere-text p  { font-size: 0.6rem; margin: 0; }
+  .sphere-text h3 { font-size: 1rem; margin: 0; }
+  .sphere-text h4 { font-size: 0.8rem; margin: 0.1rem 0; }
+  .sphere-text p  { font-size: 0.7rem; margin: 0; }
 }
 .top_company {    /* ── Company Section ── */
 	position: relative;

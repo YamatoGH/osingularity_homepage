@@ -182,9 +182,9 @@ let radius;
 function updateRadius() {
   const w = window.innerWidth;
   if (w < 480) {
-    radius = 100;
+    radius = 130;
   } else if (w < 768) {
-    radius = 150;
+    radius = 170;
   } else {
     radius = 200;
   }
