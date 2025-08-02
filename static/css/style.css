@@ -437,6 +437,8 @@ footer {
 }
 .top_service {    /* ── Service Section ── */
 	padding: var(--spacing);
+  padding-bottom: 15vh;
+
 }
 .top_service__header {
 	text-align: center;
@@ -452,29 +454,32 @@ footer {
 .top_service__title {
 	font-size: 3rem;
 	color: var(--color-text);
+  margin-bottom: 5%;
 }
 .top_service__list {
 	width: 80vw;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	gap: 15vh;
+	gap: 20vh;
 }
 .top_service__item {
 	display: flex;
 	position: relative;
-	align-items: center;
+	align-items: stretch;
 	overflow: visible;
-	gap: 0; /* 重なりのためゼロ */
+	gap: 3%; 
 }
 .top_service__img-wrapper {
 	flex: 0 0 60%;
 	overflow: hidden;
 	position: relative;
+  order: 1;
 }
 .top_service__item-img {
 	width: 100%;
 	height: auto;
+  border-radius: 20px;
 	object-fit: cover;
 	display: block;
 }
@@ -484,47 +489,124 @@ footer {
 	pointer-events: none;
 }
 .top_service__item.is_reverse {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 .top_service__item-content {
 	flex: 0 0 40%;
-	background: #fff;
-	padding: var(--spacing);
-	box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
 	position: relative;
 	z-index: 2;
-	/* テキストを画像の上に20%かぶせる */
-	margin-left: -20%;
 	text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* テキストを垂直中央揃え */
+  order: 2;
 
-  min-height: 20vh;
-  max-height: 40vh;
 }
-.top_service__item.is_reverse .top_service__item-content {
-	margin-left: 0;
-	margin-right: -20%;
+.top_service__item-content img {
+  position: absolute;
+  inset: 0;      /* top:0; right:0; bottom:0; left:0; と同義 */
+  overflow: hidden;
+}
+.top_service_item_bg_grass {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  object-position: center bottom;
+  z-index: 3;
+}
+.top_service_item_bg_board {
+  position: absolute ;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+/* — アニメーション前の初期状態 — */
+.top_service_item_bg_board {
+  /* 初期は上へオフセット＆透明 */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+}
+
+.top_service_item_bg_grass {
+  /* 初期は下へオフセット＆透明、top をリセット */
+  top: 0 !important;
+  transform: translateY(20%);
+  opacity: 0;
+  transition: transform 0.5s ease-out 0.2s, opacity 1.5s ease-out 0.6s;
+}
+/* — 要素が in-view になったら */ 
+.top_service__item.in-view .top_service_item_bg_board {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.top_service__item.in-view .top_service_item_bg_grass {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.top_service__item_texts {
+  position: relative;
+  text-align: center;
+  top: -6%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  padding: 5%;
+  border-radius: 10px;
+  color: #ffffff;
+  z-index: 2;
+}
+/* — テキストの初期状態 — */
+.top_service__item_texts {
+  transform: translateY(-50%);                 /* 上へオフセット */
+  opacity: 0;                                   /* 透明 */
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+}
+.top_service__item.in-view .top_service__item_texts {
+  transform: translateY(0);
+  opacity: 1;
 }
 .top_service__item-title {
-	font-size: 1.25rem;
+	font-size: 2rem;
+  font-weight: 900;
 	margin: 0 0 0.5rem;
+  font-size: clamp(1rem, 2vw, 2rem);
+  
+  border-bottom: 2px solid var(--color-primary);
 }
 .top_service__item-text {
-	margin: 0 0 0.75rem;
+  font-size: clamp(0.6rem, 1vw, 2rem);
+  text-align: left;
+  margin-top: 10%;
   margin-bottom: 10%;
-	color: var(--color-text);
+	color: #ffffff;
 }
 .top_service__item-link {
-	display: inline-block;              /* ボタンらしく */
-	padding: 0.1rem 0.75rem;            /* 上下・左右の余白 */
-	border-radius: 9000px;              /* 丸みを最大に */
-	background-color: var(--color-primary);     
-	color: #fff;                        
-	text-decoration: none;             
-	font-weight: 600;               
-	transition: background-color 0.3s ease;
+  position: absolute;
+  display: inline-block;
+  font-size: clamp(0.7rem, 1.2vw, 3rem);
+  padding: calc(0.05rem + 0.4vw) calc(0.1rem + 0.5vw);
+  border-radius: 9000px;
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  left: 50%;                 /* 左端をコンテナ中央に */
+  transform: translateX(-50%);
+  bottom: 15%;
 }
-.top_service__item-link:hover {   
-	background-color: #005A99;          /* ホバー時の濃い色 */
+
+.top_service__item-link:hover {
+  background-color: #005A99;
 }
 .top_service__list .top_service__item {    /* スクロール時フェードイン初期状態 */
 	opacity: 0;
