@@ -200,11 +200,15 @@ nav a.active {
 
     /* 右方向へオフスクリーン */
     transform: translateX(100%);
-    transition: transform 1s ease;
+    transition: transform 0.5s ease;
   }
   .nav-list.open {
     transform: translateX(0vw);
     display: flex;
+    flex-direction: column;
+    align-items: center;  /* 中央寄せ */
+    justify-content: flex-start;
+    padding-top: 15%;  
   }
   .nav-list li {
     margin: 1rem 0;          /* 項目間に余白 */
