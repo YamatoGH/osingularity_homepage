@@ -613,6 +613,7 @@ nav a.active {
   border-radius: 10px;
   width: 20%;       /* 調整可 */
   margin-right: 3%; /* 調整可 */
+  aspect-ratio: 3/2;
 }
 
 .top_strength__gallery .slide-item img {
