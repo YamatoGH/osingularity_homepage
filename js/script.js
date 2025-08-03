@@ -170,74 +170,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ── “Strength” セクションの 3D 回転する玉 ──
-const items = document.querySelectorAll('.carousel-item');
-const total = items.length;
+// トップページのスライドショーのスライド要素を複製して無限ループにする
+window.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.querySelector('.top_strength__gallery');
+  if (!gallery) return;
 
-let radius;
-/**
- * 画面幅に応じて回転半径を動的に設定
- * （元の updateRadius）:contentReference[oaicite:4]{index=4}
- */
-function updateRadius() {
-  const w = window.innerWidth;
-  if (w < 480) {
-    radius = 130;
-  } else if (w < 768) {
-    radius = 170;
-  } else {
-    radius = 200;
+  const track = gallery.querySelector('.slide-track');
+  // ── ① 「元スライド群」をスナップショット
+  const originals = Array.from(track.children);
+  const count     = originals.length;
+
+  // ── ② 各アイテムの幅＋右マージンを計測
+  const style     = getComputedStyle(originals[0]);
+  const itemWidth = originals[0].getBoundingClientRect().width
+                    + parseFloat(style.marginRight);
+  const cycleW    = itemWidth * count;
+
+  // ── ③ 必要な「セット数」を算出して複製
+  const galleryW  = gallery.getBoundingClientRect().width;
+  //   表示領域＋１サイクル分をカバーするセット数
+  const setsNeeded = Math.ceil((galleryW + cycleW) / cycleW);
+
+  for (let i = 0; i < setsNeeded; i++) {
+    originals.forEach(item => track.appendChild(item.cloneNode(true)));
   }
-}
-// 初期計算
-updateRadius();
 
-/**
- * リサイズ時は「位置だけ再計算」してインデックスは進めない
- * ここを updateCarousel から repositionCarousel 呼び出しに変更 :contentReference[oaicite:5]{index=5}
- */
-window.addEventListener("resize", () => {
-  updateRadius();
-  repositionCarousel();
+  // ── ④ requestAnimationFrame でシームレススクロール
+  let offset = 0;
+  const speed = 0.5; // px/frame。お好みで調整可。
+
+  function tick() {
+    offset = (offset + speed) % cycleW;
+    track.style.transform = `translateX(-${offset}px)`;
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
 });
 
-let currentIndex = 0;
-let carouselInterval;
 
-/**
- * ① 位置再計算のみ行う関数（インデックスは進めない）
- */
-function repositionCarousel() {
-  const angleStep = (2 * Math.PI) / total;
-  for (let i = 0; i < total; i++) {
-    const baseAngle = i * angleStep;
-    const angle     = baseAngle - currentIndex * angleStep;
-    const x         = Math.sin(angle) * radius;
-    const z         = Math.cos(angle) * radius;
-    items[i].style.transform =
-      `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px)`;
-    items[i].style.zIndex = Math.round(z + radius);
-  }
-}
 
-/**
- * ② オートスライド用：位置再計算＋インデックス進行
- * （元の updateCarousel）:contentReference[oaicite:6]{index=6}
- */
-function updateCarousel() {
-  repositionCarousel();
-  currentIndex = (currentIndex + 1) % total;
-}
-
-/**
- * ③ 自動再生ループを開始
- * （元の startCarousel）:contentReference[oaicite:7]{index=7}
- */
-function startCarousel() {
-  clearInterval(carouselInterval);
-  carouselInterval = setInterval(updateCarousel, 5000);
-}
-startCarousel();
 
 
 
