@@ -1,0 +1,726 @@
+/* ================================
+   Chatbot LP (chatbot_land_*)
+   ================================ */
+
+
+/* — リセット＆基本設定 — */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--color-bg: #ffffff;
+	--color-primary: #61cdff;
+	--color-text: #333;
+	--color-header: #000;
+	--color-footer: #666;
+	--spacing: 1rem;
+	--radius: 0.5rem;
+  --main_padding: 10rem;
+  
+}
+body {
+    padding-top: 12vh;
+    font-family: "Noto Serif JP", serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: #fff;
+}
+
+
+
+
+
+
+/* — ヘッダー — */
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+  	left: 0;
+    background-color: var(--color-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 12vh;
+    width: 100%;
+    z-index: 9000;
+}
+header img {
+    width: 25%;
+    margin-left: 5%;
+    color: var(--color-header);
+    margin-bottom: 0.5rem;
+}
+nav {
+  position: relative;
+  margin-right: 5%;
+}
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: left 0.5s ease, width 0.3s ease;
+  left: 0;
+  width: 0;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+nav a {
+    color: var(--color-header);
+    font-weight: 500;
+    padding: 0.25rem var(--spacing);
+
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+nav a:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+nav a.active {
+  padding-bottom: 0.1rem;
+}
+.hamburger {     /* ── ハンバーガーアイコン ── */
+  display: none;            /* デフォルトは非表示 */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+  z-index: 10002; 
+}
+.hamburger span {
+  width: 100%;
+  display: block;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+  z-index: 10002;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+@media (max-width: 1024px) {
+  header img {
+    width: 30% !important;
+  }
+  
+}
+@media (max-width: 768px) {
+  header img {
+    width: 35% !important;
+    margin-left: 3% !important;
+  }
+}
+@media (max-width: 480px) {
+  header img {
+    width: 50% !important;
+    margin-left: 2% !important;
+  }
+}
+@media (max-width: 360px) {
+  header img {
+    width: 50% !important;
+    margin-left: 1% !important;
+  }
+}
+@media (max-width: 768px) {
+.hamburger {
+    display: flex;
+}
+  .nav-list {
+    /* 画面全体に広げる */
+    position: fixed;
+    top: 12vh;                       /* ヘッダー下から */
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    /* 背景色・重なり順 */
+    background-color: #fff;
+    z-index: 10001;
+
+    /* 縦並び中央寄せ */
+    display: flex;            /* 初期は非表示 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* 右方向へオフスクリーン */
+    transform: translateX(100%);
+    transition: transform 1s ease;
+  }
+  .nav-list.open {
+    transform: translateX(0vw);
+    display: flex;
+  }
+  .nav-list li {
+    margin: 1rem 0;          /* 項目間に余白 */
+  }
+  .nav-list li a {
+    font-size: 1.5rem;       /* 大きめ文字でタップしやすく */
+    padding: 0.5rem 1rem;
+  }
+  
+}
+
+/* — フッター全体 — */
+.site-footer {
+  background-color: #292929;
+  color: #ffffff;
+  font-size: 0.9rem;
+  overflow-x: hidden;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;          /* 横縮小を防止 */
+}
+.footer-logo {
+  height: 2rem;           
+  max-width: 10rem;
+  flex-shrink: 0;           /* flexで潰れない */ 
+  margin-right: 0.75rem;
+}
+.footer-company {
+  font-weight: bold;
+  color: #fff;
+}
+.footer-nav {
+  flex: 1;                  /* 左右を開けて中央寄せ */
+  text-align: center;
+  flex-wrap: nowrap; 
+  margin-right: 22%;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: nowrap; 
+  margin: 0;
+  padding: 0;
+}
+.footer-links li {
+  flex: 0 0 auto !important;     /* 子要素を潰さない */
+}
+.footer-links a {
+  color: #fff;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.footer-links a:hover {
+  opacity: 0.7;
+}
+.footer-copy {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0.75rem 0;
+  font-size: 0.8rem;
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;           /* 縦並びに切り替え */
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  .footer-logo {
+    margin-right: 25%;
+    max-width: 30%;
+  }
+  .footer-brand {
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-nav {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .footer-links {
+    flex-direction: column;           /* リンクも縦並び */
+    gap: 0.75rem;
+  }
+}
+
+
+
+
+
+/* 共通コンテナ */
+.chatbot_land_container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ================================
+   ① Hero
+   ================================ */
+.chatbot_land_hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 78vh;
+  padding: 10vh 1rem;
+  color: #fff;
+
+  /* 背景：薄いグラデ＋ぼかし画像にも対応 */
+  background:
+    url('../images/ostaff_hero_bg_img.jpg') center/cover no-repeat;
+}
+
+/* Heroセクション 2カラム配置 */
+.chatbot_land_hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 左右に均等配置 */
+  gap: 3rem; /* マスコットとテキストの間隔 */
+  width: min(100%, 1100px); /* 中央寄せ用に幅を広めに */
+  margin: 0 auto;
+  text-align: left; /* テキストは左寄せ */
+  position: relative;
+  z-index: 1;
+}
+
+/* 左マスコット */
+.chatbot_land_mascot {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end; /* 右寄せで安定配置 */
+}
+.chatbot_land_mascot img {
+  max-width: 260px; /* 最大幅を固定 */
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.18));
+}
+
+/* 右テキストボックス */
+.chatbot_land_hero-textbox {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  color: #333;
+}
+
+.chatbot_land_catch {
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  letter-spacing: .02em;
+}
+.chatbot_land_subcatch {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.9;
+  opacity: .95;
+  margin: .5rem 0 1.5rem;
+}
+.chatbot_land_cta {
+  display: inline-block;
+  padding: .85rem 1.25rem;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform .15s ease, background .25s ease, box-shadow .25s ease;
+}
+.chatbot_land_cta:hover {
+  transform: translateY(-2px);
+  background: #17b8ff; /* primary濃淡 */
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+/* スマホでは縦並びに */
+@media (max-width: 768px) {
+  .chatbot_land_hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .chatbot_land_mascot {
+    justify-content: center; /* 中央寄せ */
+    margin-bottom: 1rem;
+  }
+  .chatbot_land_hero-textbox {
+    margin-top: 1rem;
+  }
+}
+
+
+
+/* ================================
+   ② Overview
+   ================================ */
+.chatbot_land_overview{
+  background: #f7fbff;
+  padding: 8vh 0;
+}
+.chatbot_land_overview .chatbot_land_heading{
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.chatbot_land_overview p{
+  width: min(900px, 92%);
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #444;
+}
+
+/* ================================
+   ③ Features（3本柱）
+   ================================ */
+.chatbot_land_features{
+  padding: 10vh 0;
+  background: #eaf9ff;  /* OBOARDのfeaturesトーンを継承 */
+}
+.chatbot_land_features .chatbot_land_heading{
+  text-align: center;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  margin-bottom: 2rem;
+}
+.chatbot_land_feature-list{
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+.chatbot_land_feature-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  text-align: left;
+}
+.chatbot_land_feature-item:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+.chatbot_land_icon{
+  font-size: 1.6rem;
+  width: 30%; 
+  aspect-ratio: 1/1;
+  display: grid; 
+  place-items: center;
+  border-radius: 8px;
+  background: #f2fbff;
+  color: #0aa7ee;
+  margin-bottom: 10%;
+}
+.chatbot_land_icon img {
+  font-size: 1.6rem;
+  width: 100%; 
+  height: 100%;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: #f2fbff;
+  color: #0aa7ee;
+  margin-bottom: .75rem;
+}
+.chatbot_land_feature-item h3{
+  font-size: 1.1rem;
+  margin-bottom: .25rem;
+  align-self: center;
+}
+.chatbot_land_feature-item p{
+  color: #555;
+  line-height: 1.8;
+  font-size: .98rem;
+}
+
+/* ================================
+   Benefits Overlay（写真＋重ねテキスト：左右交互）
+   ================================ */
+.chatbot_land_benefits-overlay{
+  background:#fff;
+  padding: 10vh 7vw;
+}
+.chatbot_land_benefits-overlay .chatbot_land_heading{
+  text-align:center;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  margin-bottom: 3rem;
+}
+
+.chatbot_land_benefit-card{
+  display: flex;              /* ← flexで左右に分ける */
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.chatbot_land_benefit-bg{
+  flex: 1;                    /* 写真エリア */
+  position: relative;
+}
+.chatbot_land_benefit-bg img{
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  display:block;
+}
+
+.chatbot_land_benefit-text{
+  flex: 1;                    /* テキストエリア */
+  background: rgba(255,255,255,.92);
+  padding: 1.5rem 1.75rem;
+  margin-left: -4rem;         /* 写真に少しかぶせる */
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.1);
+  z-index: 1;
+  max-width: 420px;
+  height: 15rem;
+}
+.chatbot_land_benefit-text h3{
+  font-size: 1.2rem;
+  margin-bottom: .35rem;
+}
+.chatbot_land_benefit-text p{
+  font-size: .95rem;
+  line-height: 1.7;
+  color:#444;
+}
+
+/* 偶数行は左右を反転 */
+.chatbot_land_benefit-card:nth-child(even){
+  flex-direction: row-reverse;
+}
+.chatbot_land_benefit-card:nth-child(even) .chatbot_land_benefit-text{
+  margin-left: 0;
+  margin-right: -4rem;
+  text-align: left;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .chatbot_land_benefit-card{
+    flex-direction: column;
+  }
+  .chatbot_land_benefit-text{
+    margin: -1.5rem auto 0;
+    max-width: 100%;
+  }
+
+/* 料金 */  
+}.chatbot_land_pricing {
+  background: #f9fafb;
+  padding: 6vh 0;
+}
+.chatbot_land_heading {
+  text-align: center;
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  margin-bottom: 3rem;
+}
+.chatbot_land_price-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.chatbot_land_price-box {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all .3s ease;
+}
+.chatbot_land_price-box:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.chatbot_land_price-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #111827;
+}
+.chatbot_land_price {
+  margin-bottom: 1.5rem;
+}
+.chatbot_land_price-amount {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0aa7ee;
+  display: block;
+}
+.chatbot_land_price-sub {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.chatbot_land_price-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.chatbot_land_price-features li {
+  margin: .5rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+.chatbot_land_price-btn {
+  display: inline-block;
+  background: #0aa7ee;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background .3s ease;
+}
+.chatbot_land_price-btn:hover {
+  background: #0284c7;
+}
+.chatbot_land_note {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+.chatbot_land_price-box.highlight {
+  border: 2px solid #0aa7ee;
+}
+
+/* ================================
+   ⑤ Steps（導入フロー）
+   ================================ */
+.chatbot_land_steps{
+  background: #f9f9f9;
+  padding: 10vh 0;
+}
+.chatbot_land_steps .chatbot_land_heading{
+  text-align: center;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  margin-bottom: 2rem;
+}
+.chatbot_land_step-list{
+  width: min(900px, 92%);
+  margin: 0 auto;
+  counter-reset: step;
+  list-style: none;
+}
+.chatbot_land_step-list li{
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+  border-radius: 12px;
+  padding: 1rem 1.2rem 1.2rem 3.2rem;
+  position: relative;
+  margin: .75rem 0;
+}
+.chatbot_land_step-list li::before{
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 1rem; top: 1rem;
+  width: 1.8rem; height: 1.8rem;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+/* ================================
+   ⑥ CTA（最後）
+   ================================ */
+.chatbot_land_cta-final{
+  padding: 8vh 0;
+  background: linear-gradient(180deg, #eaf9ff, #ffffff);
+  text-align: center;
+}
+.chatbot_land_cta-final p{
+  font-size: 1.1rem;
+  margin-bottom: .75rem;
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 1024px){
+  .chatbot_land_feature-list{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  .chatbot_land_pricing .chatbot_land_container{
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px){
+  .chatbot_land_hero{
+    min-height: 72vh;
+    padding: 8vh 1rem;
+  }
+  .chatbot_land_feature-list{
+    grid-template-columns: 1fr;
+  }
+  .chatbot_land_price{
+    font-size: 1.25rem;
+  }
+  .chatbot_land_step-list li{
+    padding-left: 3rem;
+  }
+}
+@media (max-width: 480px){
+  .chatbot_land_cta{
+    width: 100%;
+    max-width: 420px;
+  }
+  .chatbot_land_visual img{
+    border-radius: 10px;
+  }
+}
