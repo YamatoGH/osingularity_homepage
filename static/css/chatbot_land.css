@@ -304,9 +304,10 @@ nav a.active {
 .chatbot_land_hero {
   position: relative;
   display: grid;
+  height: 88vh;
   place-items: center;
-  min-height: 78vh;
-  padding: 10vh 1rem;
+  padding: 0vh 1rem;
+  padding-top: 5vh;
   color: #fff;
 
   /* 背景：薄いグラデ＋ぼかし画像にも対応 */
@@ -380,22 +381,92 @@ nav a.active {
   box-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
 
-/* スマホでは縦並びに */
-@media (max-width: 768px) {
-  .chatbot_land_hero-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .chatbot_land_mascot {
-    justify-content: center; /* 中央寄せ */
-    margin-bottom: 1rem;
-  }
-  .chatbot_land_hero-textbox {
-    margin-top: 1rem;
+/* 1200px以下：余白を少し詰める */
+@media (max-width: 1200px) {
+  .chatbot_land_hero {
+    min-height: clamp(520px, 78vh, 880px);
   }
 }
 
+/* 900px以下：縦並びに変更、順序は「テキスト→マスコット」 */
+@media (max-width: 900px) {
+  .chatbot_land_hero-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 4vh, 24px);
+    text-align: center;
+  }
+  .chatbot_land_hero-textbox {
+    order: 1;                 /* 先にテキスト */
+    justify-self: center;
+    text-align: left;         /* 本文は左寄せのまま可読性重視 */
+    width: min(720px, 96%);
+  }
+  .chatbot_land_mascot {
+    order: 2;
+    place-items: center;
+  }
+  .chatbot_land_mascot img {
+    width: clamp(180px, 46vw, 300px);
+  }
+  .chatbot_land_cta {
+    width: 100%;
+    max-width: 420px;         /* 押しやすい幅 */
+    text-align: center;
+  }
+}
 
+/* ===== Hero を 1200px 以下で必ず縦並び（テキスト→マスコット）に ===== */
+@media (max-width: 1200px) {
+  .chatbot_land_hero-inner {
+    display: flex;            /* 念のため明示 */
+    flex-direction: column;   /* 縦並びに切り替え */
+    align-items: center;
+    gap: clamp(16px, 4vh, 24px);
+    text-align: center;
+  }
+
+  /* 並び順：テキスト先、マスコット後 */
+  .chatbot_land_hero-textbox {
+    order: 1;
+    width: min(720px, 96%);
+    margin: 0;
+    text-align: left;         /* 本文は左寄せで読みやすく */
+  }
+  .chatbot_land_mascot {
+    order: 2;
+    justify-content: center;  /* 画像を中央に */
+    margin: 0;
+  }
+  .chatbot_land_mascot img {
+    width: clamp(180px, 46vw, 320px);
+    height: auto;
+  }
+
+  /* CTA ボタンは幅広でタップしやすく */
+  .chatbot_land_cta {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  /* セクションの高さ・余白をスマホ/タブレット向けに */
+  .chatbot_land_hero{
+    min-height: auto;
+    padding: clamp(36px, 9vh, 72px) 12px;
+  }
+}
+
+/* 600px 以下はさらにコンパクトに（任意・上書き） */
+@media (max-width: 600px) {
+  .chatbot_land_hero-textbox {
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+  }
+  .chatbot_land_mascot img {
+    width: clamp(160px, 52vw, 280px);
+  }
+}
 
 /* ================================
    ② Overview
@@ -483,81 +554,131 @@ nav a.active {
 }
 
 /* ================================
-   Benefits Overlay（写真＋重ねテキスト：左右交互）
+   Benefits Overlay（写真＋重ねテキスト：左右交互｜Responsive）
    ================================ */
 .chatbot_land_benefits-overlay{
   background:#fff;
-  padding: 10vh 7vw;
+  padding: clamp(48px, 10vh, 96px) clamp(16px, 7vw, 64px);
 }
+
 .chatbot_land_benefits-overlay .chatbot_land_heading{
   text-align:center;
   font-size: clamp(1.6rem, 2.4vw, 2.2rem);
-  margin-bottom: 3rem;
+  margin-bottom: clamp(20px, 3rem, 48px);
 }
 
+/* カード本体：デスクトップは左右2カラム、モバイルは縦並び */
 .chatbot_land_benefit-card{
-  display: flex;              /* ← flexで左右に分ける */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6rem;
+  gap: clamp(16px, 3vw, 40px);
+  margin-bottom: clamp(32px, 6rem, 72px);
   position: relative;
 }
 
+/* 画像側 */
 .chatbot_land_benefit-bg{
-  flex: 1;                    /* 写真エリア */
   position: relative;
+  overflow: hidden;
+  border-radius: 12px;
 }
 .chatbot_land_benefit-bg img{
   width: 100%;
-  height: 380px;
+  /* 固定高さを撤廃し、アスペクト比で可変 */
+  aspect-ratio: 16 / 9;
+  max-height: 420px;              /* でかすぎ防止 */
+  height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  object-position: center;
   display:block;
+  border-radius: 12px;
 }
 
+/* テキスト側（重ね風のカード） */
 .chatbot_land_benefit-text{
-  flex: 1;                    /* テキストエリア */
-  background: rgba(255,255,255,.92);
-  padding: 1.5rem 1.75rem;
-  margin-left: -4rem;         /* 写真に少しかぶせる */
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,.1);
-  z-index: 1;
-  max-width: 420px;
-  height: 15rem;
+  background: rgba(255,255,255,.96);
+  padding: clamp(16px, 2.2vw, 28px);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  max-width: 520px;
+  justify-self: end;              /* 右側に来たとき収まりよく */
 }
 .chatbot_land_benefit-text h3{
-  font-size: 1.2rem;
-  margin-bottom: .35rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  margin-bottom: .4rem;
 }
 .chatbot_land_benefit-text p{
-  font-size: .95rem;
-  line-height: 1.7;
+  font-size: clamp(.95rem, 1.3vw, 1rem);
+  line-height: 1.75;
   color:#444;
 }
 
-/* 偶数行は左右を反転 */
-.chatbot_land_benefit-card:nth-child(even){
-  flex-direction: row-reverse;
+/* 偶数行は左右を反転（h2などの影響を排除するため nth-of-type を使用） */
+.chatbot_land_benefits-overlay .chatbot_land_benefit-card:nth-of-type(even){
+  direction: rtl;                 /* グリッド順序を反転して交互に */
 }
-.chatbot_land_benefit-card:nth-child(even) .chatbot_land_benefit-text{
-  margin-left: 0;
-  margin-right: -4rem;
-  text-align: left;
+.chatbot_land_benefits-overlay .chatbot_land_benefit-card:nth-of-type(even) > *{
+  direction: ltr;                 /* 子要素の文字方向は戻す */
+}
+.chatbot_land_benefits-overlay .chatbot_land_benefit-card:nth-of-type(even) .chatbot_land_benefit-text{
+  justify-self: start;            /* 反転時のテキスト位置補正 */
 }
 
-/* Responsive */
-@media(max-width:768px){
+/* ====== ブレークポイント ====== */
+@media (max-width: 1024px){
   .chatbot_land_benefit-card{
-    flex-direction: column;
+    gap: clamp(12px, 2.2vw, 24px);
   }
   .chatbot_land_benefit-text{
-    margin: -1.5rem auto 0;
     max-width: 100%;
   }
+}
+
+/* タブレット以下：縦並び、はみ出し・かぶせ効果をオフに */
+@media (max-width: 768px){
+  .chatbot_land_benefit-card{
+    grid-template-columns: 1fr;
+    margin-bottom: clamp(24px, 6vh, 40px);
+  }
+  .chatbot_land_benefits-overlay .chatbot_land_benefit-card:nth-of-type(even){
+    direction: ltr;               /* 反転解除（縦並びで順番固定） */
+  }
+  .chatbot_land_benefit-bg img{
+    max-height: 360px;
+    aspect-ratio: 16 / 10;        /* ほんの少し縦を浅く */
+  }
+  .chatbot_land_benefit-text{
+    margin-top: -12px;            /* かぶせは最小限の重なりに */
+    width: min(720px, 100%);
+    justify-self: stretch;
+  }
+}
+
+/* スマホ小さめ */
+@media (max-width: 480px){
+  .chatbot_land_benefit-text{
+    margin-top: -8px;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+  .chatbot_land_benefit-bg img{
+    max-height: 300px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* 低速端末やユーザー設定の配慮 */
+@media (prefers-reduced-motion: reduce){
+  .chatbot_land_benefit-text{
+    transition: none !important;
+  }
+}
+
 
 /* 料金 */  
-}.chatbot_land_pricing {
+.chatbot_land_pricing {
   background: #f9fafb;
   padding: 6vh 0;
 }
