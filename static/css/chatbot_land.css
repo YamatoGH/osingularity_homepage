@@ -56,7 +56,7 @@ header {
     z-index: 9000;
 }
 header img {
-    width: 25%;
+    width: 150px;
     margin-left: 5%;
     color: var(--color-header);
     margin-bottom: 0.5rem;
@@ -133,25 +133,25 @@ nav a.active {
 }
 @media (max-width: 1024px) {
   header img {
-    width: 30% !important;
+    width: 100px !important;
   }
   
 }
 @media (max-width: 768px) {
   header img {
-    width: 35% !important;
+    width: 100px !important;
     margin-left: 3% !important;
   }
 }
 @media (max-width: 480px) {
   header img {
-    width: 50% !important;
+    width: 100px !important;
     margin-left: 2% !important;
   }
 }
 @media (max-width: 360px) {
   header img {
-    width: 50% !important;
+    width: 100px !important;
     margin-left: 1% !important;
   }
 }
@@ -159,7 +159,7 @@ nav a.active {
 .hamburger {
     display: flex;
 }
-  .nav-list {
+.nav-list {
     /* 画面全体に広げる */
     position: fixed;
     top: 12vh;                       /* ヘッダー下から */
@@ -173,7 +173,7 @@ nav a.active {
     /* 縦並び中央寄せ */
     display: flex;            /* 初期は非表示 */
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     /* 右方向へオフスクリーン */
@@ -185,11 +185,12 @@ nav a.active {
     display: flex;
   }
   .nav-list li {
+    padding-top: 3vh;
     margin: 1rem 0;          /* 項目間に余白 */
   }
   .nav-list li a {
     font-size: 1.5rem;       /* 大きめ文字でタップしやすく */
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 1rem;
   }
   
 }
@@ -332,10 +333,10 @@ nav a.active {
 .chatbot_land_mascot {
   flex: 1; 
   display: flex;
-  justify-content: flex-end; /* 右寄せで安定配置 */
+  justify-content: center; /* 右寄せで安定配置 */
 }
 .chatbot_land_mascot img {
-  max-width: 260px; /* 最大幅を固定 */
+  max-width: 350px; /* 最大幅を固定 */
   width: 100%;
   height: auto;
   display: block;
@@ -399,7 +400,7 @@ nav a.active {
     order: 1;                 /* 先にテキスト */
     justify-self: center;
     text-align: left;         /* 本文は左寄せのまま可読性重視 */
-    width: min(720px, 96%);
+    width: min(500px, 96%);
   }
   .chatbot_land_mascot {
     order: 2;
@@ -463,8 +464,14 @@ nav a.active {
     border-radius: 12px;
     box-shadow: 0 8px 18px rgba(0,0,0,.12);
   }
+  .chatbot_land_catch {
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+  }
+  .chatbot_land_subcatch {
+    font-size: clamp(.95rem, 1.4vw, 1.1rem);
+  }
   .chatbot_land_mascot img {
-    width: clamp(160px, 52vw, 280px);
+    width: clamp(100px, 40vw, 280px);
   }
 }
 
