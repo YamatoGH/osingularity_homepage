@@ -1,8 +1,9 @@
-/* — リセット＆基本設定 — */
+﻿/* 窶・繝ｪ繧ｻ繝・ヨ・・渕譛ｬ險ｭ螳・窶・*/
 html, body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
+  overflow-x: hidden;
 }
 
 *,
@@ -34,13 +35,13 @@ body {
 
 
 
-/* ローディングアニメーション */
+/* 繝ｭ繝ｼ繝・ぅ繝ｳ繧ｰ繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ */
 #logo-loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+    height: 100%;                 /* ?????????? */
   background: white;
   display: flex;
   align-items: center;
@@ -49,20 +50,20 @@ body {
   overflow: hidden;
 }
 .video-wrapper {
-    width: 48vw;        /* 好きな幅に調整 */
+    width: 48vw;        /* 螂ｽ縺阪↑蟷・↓隱ｿ謨ｴ */
     object-position: center center;
 }
 #logo-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    clip-path: inset(30% 0 30% 0); /* 上 右 下 左をカット */
+    clip-path: inset(30% 0 30% 0); /* 荳・蜿ｳ 荳・蟾ｦ繧偵き繝・ヨ */
 }
 
 
 
 
-/* — ヘッダー — */
+/* 窶・繝倥ャ繝繝ｼ 窶・*/
 header {
     position: fixed;
     display: flex;
@@ -117,8 +118,8 @@ nav a:hover {
 nav a.active {
   padding-bottom: 0.1rem;
 }
-.hamburger {     /* ── ハンバーガーアイコン ── */
-  display: none;            /* デフォルトは非表示 */
+.hamburger {     /* 笏笏 繝上Φ繝舌・繧ｬ繝ｼ繧｢繧､繧ｳ繝ｳ 笏笏 */
+  display: none;            /* 繝・ヵ繧ｩ繝ｫ繝医・髱櫁｡ｨ遉ｺ */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -154,6 +155,9 @@ nav a.active {
   transform: translateY(-11px) rotate(-45deg);
 }
 @media (max-width: 1024px) {
+  .top_hero {
+    margin-top: 0;
+  }
   header img {
     width: 30% !important;
   }
@@ -182,23 +186,23 @@ nav a.active {
     display: flex;
 }
   .nav-list {
-    /* 画面全体に広げる */
+    /* 逕ｻ髱｢蜈ｨ菴薙↓蠎・￡繧・*/
     position: fixed;
-    top: 12vh;                       /* ヘッダー下から */
+    top: 12vh;                       /* 繝倥ャ繝繝ｼ荳九°繧・*/
     right: 0;
     width: 100%;
     height: 100vh;
-    /* 背景色・重なり順 */
+    /* 閭梧勹濶ｲ繝ｻ驥阪↑繧企・*/
     background-color: #fff;
     z-index: 10001;
 
-    /* 縦並び中央寄せ */
-    display: flex;            /* 初期は非表示 */
+    /* 邵ｦ荳ｦ縺ｳ荳ｭ螟ｮ蟇・○ */
+    display: flex;            /* 蛻晄悄縺ｯ髱櫁｡ｨ遉ｺ */
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    /* 右方向へオフスクリーン */
+    /* 蜿ｳ譁ｹ蜷代∈繧ｪ繝輔せ繧ｯ繝ｪ繝ｼ繝ｳ */
     transform: translateX(100%);
     transition: transform 0.5s ease;
   }
@@ -206,21 +210,21 @@ nav a.active {
     transform: translateX(0vw);
     display: flex;
     flex-direction: column;
-    align-items: center;  /* 中央寄せ */
+    align-items: center;  /* 荳ｭ螟ｮ蟇・○ */
     justify-content: flex-start;
     padding-top: 15%;  
   }
   .nav-list li {
-    margin: 1rem 0;          /* 項目間に余白 */
+    margin: 1rem 0;          /* 鬆・岼髢薙↓菴咏區 */
   }
   .nav-list li a {
-    font-size: 1.5rem;       /* 大きめ文字でタップしやすく */
+    font-size: 1.5rem;       /* 螟ｧ縺阪ａ譁・ｭ励〒繧ｿ繝・・縺励ｄ縺吶￥ */
     padding: 0.5rem 1rem;
   }
   
 }
 
-/* — フッター全体 — */
+/* 窶・繝輔ャ繧ｿ繝ｼ蜈ｨ菴・窶・*/
 .site-footer {
   background-color: #292929;
   color: #ffffff;
@@ -240,12 +244,12 @@ nav a.active {
 .footer-brand {
   display: flex;
   align-items: center;
-  flex: 0 0 auto;          /* 横縮小を防止 */
+  flex: 0 0 auto;          /* 讓ｪ邵ｮ蟆上ｒ髦ｲ豁｢ */
 }
 .footer-logo {
   height: 2rem;           
   max-width: 10rem;
-  flex-shrink: 0;           /* flexで潰れない */ 
+  flex-shrink: 0;           /* flex縺ｧ貎ｰ繧後↑縺・*/ 
   margin-right: 0.75rem;
 }
 .footer-company {
@@ -253,7 +257,7 @@ nav a.active {
   color: #fff;
 }
 .footer-nav {
-  flex: 1;                  /* 左右を開けて中央寄せ */
+  flex: 1;                  /* 蟾ｦ蜿ｳ繧帝幕縺代※荳ｭ螟ｮ蟇・○ */
   text-align: center;
   flex-wrap: nowrap; 
   margin-right: 22%;
@@ -267,7 +271,7 @@ nav a.active {
   padding: 0;
 }
 .footer-links li {
-  flex: 0 0 auto !important;     /* 子要素を潰さない */
+  flex: 0 0 auto !important;     /* 蟄占ｦ∫ｴ繧呈ｽｰ縺輔↑縺・*/
 }
 .footer-links a {
   color: #fff;
@@ -286,9 +290,45 @@ nav a.active {
   padding: 0.75rem 0;
   font-size: 0.8rem;
 }
+
+/* Coming Soon */
+.coming-soon {
+  font-family: "Noto Serif JP", serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+.coming-soon__main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+.coming-soon__section {
+  max-width: 640px;
+  background: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+.coming-soon__section h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+.coming-soon__section p {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+.coming-soon__back {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column;           /* 縦並びに切り替え */
+    flex-direction: column;           /* 邵ｦ荳ｦ縺ｳ縺ｫ蛻・ｊ譖ｿ縺・*/
     align-items: center;
     text-align: center;
     overflow-x: hidden;
@@ -309,7 +349,7 @@ nav a.active {
     margin-bottom: 0.75rem;
   }
   .footer-links {
-    flex-direction: column;           /* リンクも縦並び */
+    flex-direction: column;           /* 繝ｪ繝ｳ繧ｯ繧らｸｦ荳ｦ縺ｳ */
     gap: 0.75rem;
   }
 }
@@ -321,29 +361,30 @@ nav a.active {
 
 
 .top_header {
-	transform: translateY(-100%);
-  transition: transform 0.6s ease-out;
-}
-.top_header.slide-down {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 9000;
 	transform: translateY(0);
+  transition: transform 0.3s ease-out;
 }
 .top_hero__bg-video {
 	position: absolute;
 	top: 0;
+	left: 0;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	object-fit: cover;
-	z-index: 1;     
-  
-  /* 再生前は隠す */
+	z-index: 0;
+	pointer-events: none;
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 1s ease;
 }
-.top_hero {    /* — Hero Section — */
+.top_hero {    /* 窶・Hero Section 窶・*/
     position: relative;
-    top: -12vh;
-    background-size: cover;
+    margin-top: -12vh;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -358,29 +399,29 @@ nav a.active {
     z-index: 2;
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: var(--radius);
+    border-radius: 0;
 }
-.top_hero > * {
+.top_hero > *:not(.top_hero__bg-video) {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     color: #fff;
     padding: 0 1rem;
 }
-.top_hero h2 {    /* タイプライター風 */
+
+.top_hero h2 {    /* 繧ｿ繧､繝励Λ繧､繧ｿ繝ｼ鬚ｨ */
     width: 0;
     z-index: 3;
     font-size: 3rem;
     display: inline-block;
-    overflow: hidden;             /* はみ出し文字を隠す */
-    border-right: .15em solid #fff;  /* カーソルっぽい縦線 */
-    white-space: nowrap;          /* 折り返さない */
-    margin: 0 auto;               /* 中央寄せ */
+    overflow: hidden;             /* 縺ｯ縺ｿ蜃ｺ縺玲枚蟄励ｒ髫縺・*/
+    border-right: .15em solid #fff;  /* 繧ｫ繝ｼ繧ｽ繝ｫ縺｣縺ｽ縺・ｸｦ邱・*/
+    white-space: nowrap;          /* 謚倥ｊ霑斐＆縺ｪ縺・*/
+    margin: 0 auto;               /* 荳ｭ螟ｮ蟇・○ */
     margin-bottom: 2rem;
     letter-spacing: .05em;
 }
@@ -389,25 +430,25 @@ nav a.active {
 		typing 1.5s steps(18,end) forwards,
 		blink-caret .75s step-end infinite;
 }
-@keyframes typing {    /* 入力アニメーション */
+@keyframes typing {    /* 蜈･蜉帙い繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ */
     from { width: 0; }
     to { width: 21ch; }
 }
-@keyframes blink-caret {    /* カーソル点滅 */
+@keyframes blink-caret {    /* 繧ｫ繝ｼ繧ｽ繝ｫ轤ｹ貊・*/
     from, to { border-color: transparent; }
     50%     { border-color: #fff; }
 }
 .top_hero h2.typing-end {
-	width: auto !important;              /* 全テキストを表示 */
+	width: auto !important;              /* 蜈ｨ繝・く繧ｹ繝医ｒ陦ｨ遉ｺ */
 	overflow: visible !important;
 	white-space: nowrap;
-	border-right: .15em solid #fff;      /* カーソル再現 */
-	animation: blink-caret .75s step-end infinite; /* カーソル点滅 */
+	border-right: .15em solid #fff;      /* 繧ｫ繝ｼ繧ｽ繝ｫ蜀咲樟 */
+	animation: blink-caret .75s step-end infinite; /* 繧ｫ繝ｼ繧ｽ繝ｫ轤ｹ貊・*/
 }
 .top_hero__logo {
   z-index: 3;
-    width: 400px;                /* ロゴの幅 */
-    height: auto;               /* 高さは自動調整 */
+    width: 400px;                /* 繝ｭ繧ｴ縺ｮ蟷・*/
+    height: auto;               /* 鬮倥＆縺ｯ閾ｪ蜍戊ｪｿ謨ｴ */
     margin-left: 0;
 
     opacity: 0;
@@ -443,13 +484,13 @@ nav a.active {
 	}
 }
 .top_hero__logo.blackhole-end {
-	opacity: 1 !important;               /* 完全に表示 */
-	transform: scale(1) !important;      /* 元の大きさ */
-	filter: none !important;             /* ブラー／明るさ調整をリセット */
-	box-shadow: none !important;         /* 光彩シャドウをリセット */
-	transition: none !important;         /* アニメーション遷移をキャンセル */
+	opacity: 1 !important;               /* 螳悟・縺ｫ陦ｨ遉ｺ */
+	transform: scale(1) !important;      /* 蜈・・螟ｧ縺阪＆ */
+	filter: none !important;             /* 繝悶Λ繝ｼ・乗・繧九＆隱ｿ謨ｴ繧偵Μ繧ｻ繝・ヨ */
+	box-shadow: none !important;         /* 蜈牙ｽｩ繧ｷ繝｣繝峨え繧偵Μ繧ｻ繝・ヨ */
+	transition: none !important;         /* 繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ驕ｷ遘ｻ繧偵く繝｣繝ｳ繧ｻ繝ｫ */
 }
-.top_hero::after {    /* 波紋アニメーション */
+.top_hero::after {    /* 豕｢邏九い繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ */
   z-index: 3;
 	content: '';
 	position: absolute;
@@ -481,42 +522,58 @@ nav a.active {
 	}
 }
 @media (max-width: 768px) {
-  /* セクション全体 */
+  /* 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蜈ｨ菴・*/
   .top_hero {
-    top: -12vh;                    /* トップオフセットをリセット */
+    margin-top: -12vh;
     height: 100vh;               
-    min-height: 300px;            /* 最小高さを縮小 */
-    padding: 2rem 1rem;           /* 内側余白を追加 */
+    min-height: 300px;            /* 譛蟆城ｫ倥＆繧堤ｸｮ蟆・*/
+    padding: 2rem 1rem;           /* 冁E�E余白を追加 */
+    padding-top: calc(2rem + 12vh);
+    background-image: url("../images/top_hero_back_img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .top_hero__bg-video {
-    height: 100vh;                 /* 動画の高さも合わせる */
-  }
-  .top_hero h2 {    /* タイプライター風テキスト */
-    font-size: 1.9rem;              /* 文字サイズを縮小 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+	pointer-events: none;
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+  .top_hero h2 {    /* 繧ｿ繧､繝励Λ繧､繧ｿ繝ｼ鬚ｨ繝・く繧ｹ繝・*/
+    font-size: 1.9rem;              /* 譁・ｭ励し繧､繧ｺ繧堤ｸｮ蟆・*/
     margin-bottom: 1.5rem;
   }
-  .top_hero__logo {    /* ロゴアニメーション */
-    width: 350px;                 /* ロゴ幅を縮小 :contentReference[oaicite:3]{index=3} */
-    margin: 1rem auto 0;          /* 中央寄せ */
+  .top_hero__logo {    /* 繝ｭ繧ｴ繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ */
+    width: 350px;                 /* 繝ｭ繧ｴ蟷・ｒ邵ｮ蟆・:contentReference[oaicite:3]{index=3} */
+    margin: 1rem auto 0;          /* 荳ｭ螟ｮ蟇・○ */
   }
 }
 @media (max-width: 480px) {
   .top_hero {
-    height: 100vh;                 /* さらに高さを調整 */
+    height: 100vh;                 /* 縺輔ｉ縺ｫ鬮倥＆繧定ｪｿ謨ｴ */
   }
   .top_hero h2 {
-    font-size: 1.4rem;            /* 小さい画面では更に文字を小さく */
+    font-size: 1.4rem;            /* 蟆上＆縺・判髱｢縺ｧ縺ｯ譖ｴ縺ｫ譁・ｭ励ｒ蟆上＆縺・*/
   }
   .top_hero__logo {
-    width: 250px;                 /* ロゴも縮小 */
+    width: 250px;                 /* 繝ｭ繧ｴ繧らｸｮ蟆・*/
   }
 }
 
 
 
-.top_strength {    /* ── Strength セクション ── */
-  margin-top: -12vh;
-  padding-top: 4rem;
+.top_strength {    /* 笏笏 Strength 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ 笏笏 */
+  margin-top: 0;
+  padding-top: calc(4rem + 6vh);
   padding-bottom: 10%;
   background: linear-gradient(black, white);
 }
@@ -530,15 +587,16 @@ nav a.active {
 .top_strength_three_columns {
   display: flex;
   width: 100%;
-  gap: 1rem;                /* カラム間の余白 */
+  gap: 1rem;                /* 繧ｫ繝ｩ繝髢薙・菴咏區 */
+  justify-content: center;
 }
 .top_strength_three_columns__left,
 .top_strength_three_columns__right {
   display: flex;
-  flex-direction: column;   /* 縦積みの場合 */
-  justify-content: center;  /* 縦方向中央寄せ */
-  align-items: center;      /* 横方向中央寄せ */
-  flex: 1;                  /* 左右は幅 3 */
+  flex-direction: column;   /* 邵ｦ遨阪∩縺ｮ蝣ｴ蜷・*/
+  justify-content: center;  /* 邵ｦ譁ｹ蜷台ｸｭ螟ｮ蟇・○ */
+  align-items: center;      /* 讓ｪ譁ｹ蜷台ｸｭ螟ｮ蟇・○ */
+  flex: 1;                  /* 蟾ｦ蜿ｳ縺ｯ蟷・3 */
 }
 .top_strength_three_columns__left img,
 .top_strength_three_columns__right img {
@@ -560,7 +618,10 @@ nav a.active {
   width: 50%;
 }
 .top_strength_three_columns__center {
-  flex: 1;                  /* 中央は幅 4 */
+  flex: 1;                  /* 荳ｭ螟ｮ縺ｯ蟷・4 */
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 @keyframes float {
   0%   { transform: translateY(0); }
@@ -572,20 +633,20 @@ nav a.active {
 }
 .top_strength_three_columns__left_img02 {
   animation: float 5s ease-in-out infinite;
-  animation-delay: 1.5s;  /* ずらして動きをずらす */
+  animation-delay: 1.5s;  /* 縺壹ｉ縺励※蜍輔″繧偵★繧峨☆ */
 }
 .top_strength_three_columns__right_img01 {
   animation: float 4s ease-in-out infinite;
 }
 .top_strength_three_columns__right_img02 {
   animation: float 5s ease-in-out infinite;
-  animation-delay: 1.5s;  /* ずらして動きをずらす */
+  animation-delay: 1.5s;  /* 縺壹ｉ縺励※蜍輔″繧偵★繧峨☆ */
 }
 .top_strength__text {
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* 縦方向中央寄せ */
-  align-items: center;      /* 横方向中央寄せ */
+  justify-content: center;  /* 邵ｦ譁ｹ蜷台ｸｭ螟ｮ蟇・○ */
+  align-items: center;      /* 讓ｪ譁ｹ蜷台ｸｭ螟ｮ蟇・○ */
   text-align: center;
   color: #ffffff;
   gap: 2rem;
@@ -593,9 +654,9 @@ nav a.active {
 
 }
 .top_strength_three_columns {
-  align-items: flex-start;  /* 上揃え */
+  align-items: flex-start;  /* 荳頑純縺・*/
   margin-bottom: 20vh;
-  /* align-items: center; で中央揃えにもできます */
+  /* align-items: center; 縺ｧ荳ｭ螟ｮ謠・∴縺ｫ繧ゅ〒縺阪∪縺・*/
 }
 .top_strength__gallery {
   overflow: hidden;
@@ -611,8 +672,8 @@ nav a.active {
 .top_strength__gallery .slide-item {
   flex: 0 0 auto;
   border-radius: 10px;
-  width: 20%;       /* 調整可 */
-  margin-right: 3%; /* 調整可 */
+  width: 20%;       /* 隱ｿ謨ｴ蜿ｯ */
+  margin-right: 3%; /* 隱ｿ謨ｴ蜿ｯ */
   aspect-ratio: 3/2;
 }
 
@@ -625,56 +686,56 @@ nav a.active {
   .top_strength {    
     padding-bottom: 5%;
   }
-  /* 見出しを少し小さく */
+  /* 隕句・縺励ｒ蟆代＠蟆上＆縺・*/
   .top_strength__phrase {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 3rem;
   }
   .top_strength_three_columns {
     display: flex;
-    flex-direction: column;      /* 横並び → 縦並び */
-    align-items: center;         /* 中央揃え */
-    gap: 4rem;                   /* 縦の間隔 */
+    flex-direction: column;      /* 讓ｪ荳ｦ縺ｳ 竊・邵ｦ荳ｦ縺ｳ */
+    align-items: center;         /* 荳ｭ螟ｮ謠・∴ */
+    gap: 4rem;                   /* 邵ｦ縺ｮ髢馴囈 */
     margin-bottom: 7%;
   }
-  /* 各カラムを全幅に */
+  /* 蜷・き繝ｩ繝繧貞・蟷・↓ */
   .top_strength_three_columns__left,
   .top_strength_three_columns__center {
     width: 100%;
-    margin-bottom: 2rem;        /* 下部余白 */
+    margin-bottom: 2rem;        /* 荳矩Κ菴咏區 */
   }
-  /* テキスト部だけ order で真ん中に */
+  /* 繝・く繧ｹ繝磯Κ縺縺・order 縺ｧ逵溘ｓ荳ｭ縺ｫ */
   .top_strength_three_columns__left   { order: 1; }
   .top_strength_three_columns__center { order: 2; }
   .top_strength_three_columns__right  { order: 3; }
   .top_strength_three_columns__left,
   .top_strength_three_columns__right {
-    /* デフォルトの縦積みを解除して横並びに */
+    /* 繝・ヵ繧ｩ繝ｫ繝医・邵ｦ遨阪∩繧定ｧ｣髯､縺励※讓ｪ荳ｦ縺ｳ縺ｫ */
     flex-direction: row !important;
-    justify-content: center;    /* 中央揃え */
-    gap: 1rem;                  /* 画像間のスペース */
+    justify-content: center;    /* 荳ｭ螟ｮ謠・∴ */
+    gap: 1rem;                  /* 逕ｻ蜒城俣縺ｮ繧ｹ繝壹・繧ｹ */
   }
-  /* １枚目の下余白を解除 */
+  /* ・第椢逶ｮ縺ｮ荳倶ｽ咏區繧定ｧ｣髯､ */
   .top_strength_three_columns__left_img01,
   .top_strength_three_columns__right_img01 {
     margin-bottom: 0 !important;
   }
-  /* 横並びでも収まるよう幅を微調整 */
+  /* 讓ｪ荳ｦ縺ｳ縺ｧ繧ょ庶縺ｾ繧九ｈ縺・ｹ・ｒ蠕ｮ隱ｿ謨ｴ */
   .top_strength_three_columns__left_img01,
   .top_strength_three_columns__left_img02,
   .top_strength_three_columns__right_img01,
   .top_strength_three_columns__right_img02 {
-    width: 45%;  /* 2枚で約100%になるように */
+    width: 45%;  /* 2譫壹〒邏・00%縺ｫ縺ｪ繧九ｈ縺・↓ */
     max-width: 45%;
   }
   .top_strength__gallery .slide-item {
   flex: 0 0 auto;
   border-radius: 10px;
-  width: 30%;       /* 調整可 */
-  margin-right: 3%; /* 調整可 */
+  width: 30%;       /* 隱ｿ謨ｴ蜿ｯ */
+  margin-right: 3%; /* 隱ｿ謨ｴ蜿ｯ */
 }
 }
-/* スマホさらに小さい端末用 */
+/* 繧ｹ繝槭・縺輔ｉ縺ｫ蟆上＆縺・ｫｯ譛ｫ逕ｨ */
 @media (max-width: 480px) {
   .top_strength__phrase {
     font-size: 2.2rem;
@@ -687,39 +748,39 @@ nav a.active {
 }
 @media (max-width: 768px) {
   .top_news__header {
-    text-align: center;  /* 狭い端末では中央寄せ */
+    text-align: center;  /* 迢ｭ縺・ｫｯ譛ｫ縺ｧ縺ｯ荳ｭ螟ｮ蟇・○ */
   }
   .top_news {
-    padding: 2rem 1rem;           /* 横余白を狭くしてコンパクトに */
+    padding: 2rem 1rem;           /* 讓ｪ菴咏區繧堤強縺上＠縺ｦ繧ｳ繝ｳ繝代け繝医↓ */
   }
   .top_news__subtitle {
-    font-size: 1.25rem;           /* サブタイトルを少し縮小 */
+    font-size: 1.25rem;           /* 繧ｵ繝悶ち繧､繝医Ν繧貞ｰ代＠邵ｮ蟆・*/
     margin-bottom: 0.5rem;
   }
   .top_news__title {
-    font-size: 1.75rem;           /* 見出しを縮小 */
+    font-size: 1.75rem;           /* 隕句・縺励ｒ邵ｮ蟆・*/
     line-height: 1.2;
   }
   .top_news__list {
     margin-top: var(--spacing);
   }
   .top_news__item {
-    padding: calc(var(--spacing) / 2) 0;  /* 項目間隔を詰める */
+    padding: calc(var(--spacing) / 2) 0;  /* 鬆・岼髢馴囈繧定ｩｰ繧√ｋ */
   }
   .top_news__item-title {
-    font-size: 1.1rem;            /* 記事タイトルも縮小 */
+    font-size: 1.1rem;            /* 險倅ｺ九ち繧､繝医Ν繧らｸｮ蟆・*/
     margin-bottom: 0.25rem;
   }
   .top_news__more {
-    margin-top: 1.5rem;           /* 「一覧を見る」の余白調整 */
+    margin-top: 1.5rem;           /* 縲御ｸ隕ｧ繧定ｦ九ｋ縲阪・菴咏區隱ｿ謨ｴ */
   }
 }
 @media (max-width: 480px) {
   .top_news__header {
-    text-align: center;  /* 狭い端末では中央寄せ */
+    text-align: center;  /* 迢ｭ縺・ｫｯ譛ｫ縺ｧ縺ｯ荳ｭ螟ｮ蟇・○ */
   }
   .top_news {
-    padding: 1.5rem 0.5rem;       /* さらにコンパクトに */
+    padding: 1.5rem 0.5rem;       /* 縺輔ｉ縺ｫ繧ｳ繝ｳ繝代け繝医↓ */
   }
   .top_news__subtitle {
     font-size: 1rem;
@@ -737,10 +798,10 @@ nav a.active {
     margin-top: 1rem;
   }
   .top_news__more-link {
-    font-size: 0.9rem;            /* ボタン文字も小さく */
+    font-size: 0.9rem;            /* 繝懊ち繝ｳ譁・ｭ励ｂ蟆上＆縺・*/
   }
 }
-.top_service {    /* ── Service Section ── */
+.top_service {    /* 笏笏 Service Section 笏笏 */
 	padding: var(--spacing);
   padding-bottom: 15vh;
 
@@ -803,13 +864,13 @@ nav a.active {
 	text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* テキストを垂直中央揃え */
+  justify-content: center;   /* 繝・く繧ｹ繝医ｒ蝙ら峩荳ｭ螟ｮ謠・∴ */
   order: 2;
 
 }
 .top_service__item-content img {
   position: absolute;
-  inset: 0;      /* top:0; right:0; bottom:0; left:0; と同義 */
+  inset: 0;      /* top:0; right:0; bottom:0; left:0; 縺ｨ蜷檎ｾｩ */
   overflow: hidden;
 }
 .top_service_item_bg_grass {
@@ -831,22 +892,22 @@ nav a.active {
   object-fit: contain;
   z-index: 1;
 }
-/* — アニメーション前の初期状態 — */
+/* 窶・繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ蜑阪・蛻晄悄迥ｶ諷・窶・*/
 .top_service_item_bg_board {
-  /* 初期は上へオフセット＆透明 */
+  /* 蛻晄悄縺ｯ荳翫∈繧ｪ繝輔そ繝・ヨ・・乗・ */
   transform: translateY(-50%);
   opacity: 0;
   transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 
 .top_service_item_bg_grass {
-  /* 初期は下へオフセット＆透明、top をリセット */
+  /* 蛻晄悄縺ｯ荳九∈繧ｪ繝輔そ繝・ヨ・・乗・縲》op 繧偵Μ繧ｻ繝・ヨ */
   top: 0 !important;
   transform: translateY(20%);
   opacity: 0;
   transition: transform 0.5s ease-out 0.2s, opacity 1.5s ease-out 0.6s;
 }
-/* — 要素が in-view になったら */ 
+/* 窶・隕∫ｴ縺・in-view 縺ｫ縺ｪ縺｣縺溘ｉ */ 
 .top_service__item.in-view .top_service_item_bg_board {
   transform: translateY(0);
   opacity: 1;
@@ -869,10 +930,10 @@ nav a.active {
   color: #ffffff;
   z-index: 2;
 }
-/* — テキストの初期状態 — */
+/* 窶・繝・く繧ｹ繝医・蛻晄悄迥ｶ諷・窶・*/
 .top_service__item_texts {
-  transform: translateY(-50%);                 /* 上へオフセット */
-  opacity: 0;                                   /* 透明 */
+  transform: translateY(-50%);                 /* 荳翫∈繧ｪ繝輔そ繝・ヨ */
+  opacity: 0;                                   /* 騾乗・ */
   transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 .top_service__item.in-view .top_service__item_texts {
@@ -905,53 +966,53 @@ nav a.active {
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s ease;
-  left: 50%;                 /* 左端をコンテナ中央に */
+  left: 50%;                 /* 蟾ｦ遶ｯ繧偵さ繝ｳ繝・リ荳ｭ螟ｮ縺ｫ */
   transform: translateX(-50%);
   bottom: 15%;
 }
 .top_service__item-link:hover {
   background-color: #005A99;
 }
-.top_service__list .top_service__item {    /* スクロール時フェードイン初期状態 */
+.top_service__list .top_service__item {    /* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ譎ゅヵ繧ｧ繝ｼ繝峨う繝ｳ蛻晄悄迥ｶ諷・*/
 	opacity: 0;
 	transform: translateX(-50px);
 	transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
-.top_service__list .top_service__item:nth-child(even) {    /* 偶数番目は右からフェードイン */
+.top_service__list .top_service__item:nth-child(even) {    /* 蛛ｶ謨ｰ逡ｪ逶ｮ縺ｯ蜿ｳ縺九ｉ繝輔ぉ繝ｼ繝峨う繝ｳ */
 	transform: translateX(50px);
 }
-.top_service__list .top_service__item.in-view {    /* in-view クラスで表示 */
+.top_service__list .top_service__item.in-view {    /* in-view 繧ｯ繝ｩ繧ｹ縺ｧ陦ｨ遉ｺ */
 	opacity: 1;
 	transform: translateX(0);
 }
-/* ── Service Section: Responsive ── */
+/* 笏笏 Service Section: Responsive 笏笏 */
 @media (max-width: 768px) {
   .top_service {
     padding: calc(var(--spacing) * 2) 1rem;   
   }
   .top_service__list {
-    width: 90vw;                          /* 横幅をやや広げ */
-    gap: calc(var(--spacing) * 4);        /* 項目間の余白を詰める */
+    width: 90vw;                          /* 讓ｪ蟷・ｒ繧・ｄ蠎・￡ */
+    gap: calc(var(--spacing) * 4);        /* 鬆・岼髢薙・菴咏區繧定ｩｰ繧√ｋ */
   }
   .top_service__item {
     display: flex;
-    flex-direction: column;               /* 縦並びに切替 */
+    flex-direction: column;               /* 邵ｦ荳ｦ縺ｳ縺ｫ蛻・崛 */
     align-items: center;
     gap: var(--spacing);
     margin-bottom: var(--spacing);
   }
   .top_service__img-wrapper {
     flex: none;
-    width: 100%;                          /* 画像は全幅 */
+    width: 100%;                          /* 逕ｻ蜒上・蜈ｨ蟷・*/
     margin: 0;
   }
   .top_service__item-content {
     flex: none;
     width: 100%;                         
-    margin: 0;                            /* オーバーラップを解除 */
+    margin: 0;                            /* 繧ｪ繝ｼ繝舌・繝ｩ繝・・繧定ｧ｣髯､ */
     padding: var(--spacing);
     box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
-    text-align: center;                   /* 中央寄せ */
+    text-align: center;                   /* 荳ｭ螟ｮ蟇・○ */
   
     min-height: auto;
     max-height: none;
@@ -960,8 +1021,9 @@ nav a.active {
     background-color: #000;
     z-index: -1;
   }
+  .top_service_item_bg,
   .top_service_item_bg_board {
-    display: none
+    display: none !important;
   }
   .top_service__item.is_reverse {
     flex-direction: column;
@@ -970,16 +1032,50 @@ nav a.active {
   .top_service__item.is_reverse .top_service__item-content {
     margin-left: 0 !important;            
     margin-right: 0 !important;
-    width: 100%;                           /* 幅を整えて中央寄せ */
-    text-align: center;                   /* テキストも中央揃え */
+    width: 100%;                           /* 蟷・ｒ謨ｴ縺医※荳ｭ螟ｮ蟇・○ */
+    text-align: center;                   /* 繝・く繧ｹ繝医ｂ荳ｭ螟ｮ謠・∴ */
+  }
+  .top_service__item_texts {
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 1.25rem;
+    transform: none;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 1rem;
+    color: #fff;
+  }
+  .top_service__item-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .top_service__item-text {
+    margin: 1rem 0 1.5rem;
+    font-size: 1rem;
+    text-align: left;
+    color: #fff;
+  }
+  .top_service__item-link {
+    position: static;
+    transform: none;
+    left: auto;
+    bottom: auto;
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
   }
 }
 @media (max-width: 480px) {
   .top_service__header {
-    margin: 5vh 0 3vh;                    /* ヘッダー上下余白を詰める */
+    margin: 5vh 0 3vh;                    /* 繝倥ャ繝繝ｼ荳贋ｸ倶ｽ咏區繧定ｩｰ繧√ｋ */
   }
   .top_service__subtitle {
-    font-size: 1.25rem;                   /* タイトル縮小 */
+    font-size: 1.25rem;                   /* 繧ｿ繧､繝医Ν邵ｮ蟆・*/
   }
   .top_service__title {
     font-size: 2rem;
@@ -991,20 +1087,20 @@ nav a.active {
     font-size: 0.9rem;
   }
   .top_service__item-link {
-    padding: 0.5rem 1rem;                 /* ボタンの余白を小さく */
+    padding: 0.5rem 1rem;                 /* 繝懊ち繝ｳ縺ｮ菴咏區繧貞ｰ上＆縺・*/
   }
   .top_service__item.is_reverse {
     flex-direction: column;
     align-items: center
   }
   .top_service__item.is_reverse .top_service__item-content {
-    margin-left: 0 !important;            /* 既存の -20% を解除 */
+    margin-left: 0 !important;            /* 譌｢蟄倥・ -20% 繧定ｧ｣髯､ */
     margin-right: 0 !important;
-    width: 100%;                           /* 幅を整えて中央寄せ */
-    text-align: center;                   /* テキストも中央揃え */
+    width: 100%;                           /* 蟷・ｒ謨ｴ縺医※荳ｭ螟ｮ蟇・○ */
+    text-align: center;                   /* 繝・く繧ｹ繝医ｂ荳ｭ螟ｮ謠・∴ */
   }
 }
-.top_news {   /* — News Section — */
+.top_news {   /* 窶・News Section 窶・*/
     background-color: rgb(240, 240, 240);
     padding: var(--main_padding);
     padding-top: 3rem;
@@ -1046,9 +1142,9 @@ nav a.active {
     margin-top: calc(var(--spacing) * 1.5);
 }
 .top_news__more-link {
-	/* .btn-link をそのまま流用 */
+	/* .btn-link 繧偵◎縺ｮ縺ｾ縺ｾ豬∫畑 */
 }
-.top_company {    /* ── Company Section ── */
+.top_company {    /* 笏笏 Company Section 笏笏 */
 	position: relative;
 	width: 80vw;
 	margin: 30vh auto;
@@ -1108,9 +1204,9 @@ nav a.active {
     text-decoration: none;
 }
 .top_company__action-link {
-	display: inline-block;              /* ボタンらしく */
-	padding: 0.1rem 0.75rem;            /* 上下・左右の余白 */
-	border-radius: 9000px;              /* 丸みを最大に */
+	display: inline-block;              /* 繝懊ち繝ｳ繧峨＠縺・*/
+	padding: 0.1rem 0.75rem;            /* 荳贋ｸ九・蟾ｦ蜿ｳ縺ｮ菴咏區 */
+	border-radius: 9000px;              /* 荳ｸ縺ｿ繧呈怙螟ｧ縺ｫ */
 	background-color: var(--color-primary);     
 	color: #fff;                        
 	text-decoration: none;             
@@ -1119,22 +1215,22 @@ nav a.active {
 	transition: background-color 0.3s ease;
 }
 .top_company__action-link:hover {   
-	background-color: #005A99;          /* ホバー時の濃い色 */
+	background-color: #005A99;          /* 繝帙ヰ繝ｼ譎ゅ・豼・＞濶ｲ */
 }
 @media (max-width: 768px) {
-  /* セクション幅・余白を調整 */
+  /* 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蟷・・菴咏區繧定ｪｿ謨ｴ */
   .top_company {
-    width: 90vw;                           /* 80vw → 90vw に拡大 */
-    margin: 10vh auto !important;          /* 上下マージンを縮小 */
-    padding: calc(var(--spacing) * 2) var(--spacing) !important; /* パディングを半減 */
+    width: 90vw;                           /* 80vw 竊・90vw 縺ｫ諡｡螟ｧ */
+    margin: 10vh auto !important;          /* 荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
+    padding: calc(var(--spacing) * 2) var(--spacing) !important; /* 繝代ョ繧｣繝ｳ繧ｰ繧貞濠貂・*/
   }
-  /* テキスト幅をフルに */
+  /* 繝・く繧ｹ繝亥ｹ・ｒ繝輔Ν縺ｫ */
   .top_company__subtitle,
   .top_company__title,
   .top_company__text {
-    width: 100% !important;                /* 35% → 100% に */
+    width: 100% !important;                /* 35% 竊・100% 縺ｫ */
   }
-  /* 見出し・本文を中央寄せ */
+  /* 隕句・縺励・譛ｬ譁・ｒ荳ｭ螟ｮ蟇・○ */
   .top_company__header,
   .top_company__body {
     text-align: center !important;
@@ -1142,21 +1238,21 @@ nav a.active {
 }
 @media (max-width: 480px) {
   .top_company {
-    padding: calc(var(--spacing)) 1rem !important; /* 横パディングを狭める */
-    margin: 5vh auto !important;                    /* さらに上下マージンを縮小 */
+    padding: calc(var(--spacing)) 1rem !important; /* 讓ｪ繝代ョ繧｣繝ｳ繧ｰ繧堤強繧√ｋ */
+    margin: 5vh auto !important;                    /* 縺輔ｉ縺ｫ荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
   }
   .top_company__subtitle {
-    font-size: 1.25rem !important;          /* サブタイトル縮小 */
+    font-size: 1.25rem !important;          /* 繧ｵ繝悶ち繧､繝医Ν邵ｮ蟆・*/
   }
   .top_company__title {
-    font-size: 1.5rem !important;           /* タイトル縮小 */
+    font-size: 1.5rem !important;           /* 繧ｿ繧､繝医Ν邵ｮ蟆・*/
   }
   .top_company__text {
-    font-size: 0.9rem !important;           /* 本文縮小 */
+    font-size: 0.9rem !important;           /* 譛ｬ譁・ｸｮ蟆・*/
     line-height: 1.4 !important;
   }
 }
-.top_to_service_list {    /* ── to service list Section ── */
+.top_to_service_list {    /* 笏笏 to service list Section 笏笏 */
 	position: relative;
 	width: 80vw;
 	margin: 5vh auto;
@@ -1215,9 +1311,9 @@ nav a.active {
     text-decoration: none;
 }
 .top_to_service_list__action-link {
-	display: inline-block;              /* ボタンらしく */
-	padding: 0.1rem 0.75rem;            /* 上下・左右の余白 */
-	border-radius: 9000px;              /* 丸みを最大に */
+	display: inline-block;              /* 繝懊ち繝ｳ繧峨＠縺・*/
+	padding: 0.1rem 0.75rem;            /* 荳贋ｸ九・蟾ｦ蜿ｳ縺ｮ菴咏區 */
+	border-radius: 9000px;              /* 荳ｸ縺ｿ繧呈怙螟ｧ縺ｫ */
 	background-color: var(--color-primary);     
 	color: #fff;                        
 	text-decoration: none;             
@@ -1226,22 +1322,22 @@ nav a.active {
 	transition: background-color 0.3s ease;
 }
 .top_to_service_list__action-link:hover {   
-	background-color: #005A99;          /* ホバー時の濃い色 */
+	background-color: #005A99;          /* 繝帙ヰ繝ｼ譎ゅ・豼・＞濶ｲ */
 }
 @media (max-width: 768px) {
-  /* セクション幅・余白を調整 */
+  /* 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蟷・・菴咏區繧定ｪｿ謨ｴ */
   .top_to_service_list {
-    width: 90vw;                           /* 80vw → 90vw に拡大 */
-    margin: 10vh auto !important;          /* 上下マージンを縮小 */
-    padding: calc(var(--spacing) * 2) var(--spacing) !important; /* パディングを半減 */
+    width: 90vw;                           /* 80vw 竊・90vw 縺ｫ諡｡螟ｧ */
+    margin: 10vh auto !important;          /* 荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
+    padding: calc(var(--spacing) * 2) var(--spacing) !important; /* 繝代ョ繧｣繝ｳ繧ｰ繧貞濠貂・*/
   }
-  /* テキスト幅をフルに */
+  /* 繝・く繧ｹ繝亥ｹ・ｒ繝輔Ν縺ｫ */
   .top_to_service_list__subtitle,
   .top_to_service_list__title,
   .top_to_service_list__text {
-    width: 100% !important;                /* 35% → 100% に */
+    width: 100% !important;                /* 35% 竊・100% 縺ｫ */
   }
-  /* 見出し・本文を中央寄せ */
+  /* 隕句・縺励・譛ｬ譁・ｒ荳ｭ螟ｮ蟇・○ */
   .top_to_service_list__header,
   .top_to_service_list__body {
     text-align: center !important;
@@ -1249,21 +1345,21 @@ nav a.active {
 }
 @media (max-width: 480px) {
   .top_to_service_list {
-    padding: calc(var(--spacing)) 1rem !important; /* 横パディングを狭める */
-    margin: 5vh auto !important;                    /* さらに上下マージンを縮小 */
+    padding: calc(var(--spacing)) 1rem !important; /* 讓ｪ繝代ョ繧｣繝ｳ繧ｰ繧堤強繧√ｋ */
+    margin: 5vh auto !important;                    /* 縺輔ｉ縺ｫ荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
   }
   .top_to_service_list__subtitle {
-    font-size: 1.25rem !important;          /* サブタイトル縮小 */
+    font-size: 1.25rem !important;          /* 繧ｵ繝悶ち繧､繝医Ν邵ｮ蟆・*/
   }
   .top_to_service_list__title {
-    font-size: 1.5rem !important;           /* タイトル縮小 */
+    font-size: 1.5rem !important;           /* 繧ｿ繧､繝医Ν邵ｮ蟆・*/
   }
   .top_to_service_list__text {
-    font-size: 0.9rem !important;           /* 本文縮小 */
+    font-size: 0.9rem !important;           /* 譛ｬ譁・ｸｮ蟆・*/
     line-height: 1.4 !important;
   }
 }
-.top_contact {    /* ── Contact Section ── */
+.top_contact {    /* 笏笏 Contact Section 笏笏 */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1331,41 +1427,41 @@ nav a.active {
 }
 @media (max-width: 768px) {
   .top_contact {
-    margin: 10vh auto !important;           /* 上下マージンを縮小 */
-    width: 90vw !important;                 /* 横幅を広げ */
-    height: auto !important;                /* 固定高さを解除 */
-    padding: calc(var(--spacing) / 2) !important; /* パディング半減 */
+    margin: 10vh auto !important;           /* 荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
+    width: 90vw !important;                 /* 讓ｪ蟷・ｒ蠎・￡ */
+    height: auto !important;                /* 蝗ｺ螳夐ｫ倥＆繧定ｧ｣髯､ */
+    padding: calc(var(--spacing) / 2) !important; /* 繝代ョ繧｣繝ｳ繧ｰ蜊頑ｸ・*/
   }
   .top_contact_title {
-    font-size: 1.75rem !important;          /* タイトルを少し縮小 */
+    font-size: 1.75rem !important;          /* 繧ｿ繧､繝医Ν繧貞ｰ代＠邵ｮ蟆・*/
   }
   .top_contact__link {
-    gap: 1rem !important;                   /* アイコンとテキストの間隔を狭める */
-    padding: 0.5rem 1rem !important;        /* ボタン余白を縮小 */
-    width: 80% !important;                  /* 幅を制限 */
-    max-width: 400px !important;            /* 最大幅を設定 */
+    gap: 1rem !important;                   /* 繧｢繧､繧ｳ繝ｳ縺ｨ繝・く繧ｹ繝医・髢馴囈繧堤強繧√ｋ */
+    padding: 0.5rem 1rem !important;        /* 繝懊ち繝ｳ菴咏區繧堤ｸｮ蟆・*/
+    width: 80% !important;                  /* 蟷・ｒ蛻ｶ髯・*/
+    max-width: 400px !important;            /* 譛螟ｧ蟷・ｒ險ｭ螳・*/
   }
 }
 @media (max-width: 480px) {
   .top_contact {
-    margin: 8vh auto !important;            /* さらに上下マージンを縮小 */
-    width: 95vw !important;                 /* ほぼフル幅 */
-    padding: calc(var(--spacing) / 3) !important; /* 余白最小化 */
+    margin: 8vh auto !important;            /* 縺輔ｉ縺ｫ荳贋ｸ九・繝ｼ繧ｸ繝ｳ繧堤ｸｮ蟆・*/
+    width: 95vw !important;                 /* 縺ｻ縺ｼ繝輔Ν蟷・*/
+    padding: calc(var(--spacing) / 3) !important; /* 菴咏區譛蟆丞喧 */
   }
   .top_contact_title {
-    font-size: 1.5rem !important;           /* タイトルを更に縮小 */
+    font-size: 1.5rem !important;           /* 繧ｿ繧､繝医Ν繧呈峩縺ｫ邵ｮ蟆・*/
   }
   .top_contact__link {
-    gap: 0.5rem !important;                 /* アイコンとテキストの間隔を更に狭める */
-    padding: 0.5rem !important;             /* ボタン余白を最小化 */
-    width: 100% !important;                 /* フル幅 */
+    gap: 0.5rem !important;                 /* 繧｢繧､繧ｳ繝ｳ縺ｨ繝・く繧ｹ繝医・髢馴囈繧呈峩縺ｫ迢ｭ繧√ｋ */
+    padding: 0.5rem !important;             /* 繝懊ち繝ｳ菴咏區繧呈怙蟆丞喧 */
+    width: 100% !important;                 /* 繝輔Ν蟷・*/
   }
   .top_contact__icon-wrapper {
-    width: 1.5rem !important;               /* アイコンラッパー縮小 */
+    width: 1.5rem !important;               /* 繧｢繧､繧ｳ繝ｳ繝ｩ繝・ヱ繝ｼ邵ｮ蟆・*/
     height: 1.5rem !important;
   }
   .top_contact__icon {
-    width: 100% !important;                 /* アイコンサイズにフィット */
+    width: 100% !important;                 /* 繧｢繧､繧ｳ繝ｳ繧ｵ繧､繧ｺ縺ｫ繝輔ぅ繝・ヨ */
     height: 100% !important;
   }
 }
@@ -1374,7 +1470,7 @@ nav a.active {
 
 
 
-/* 会社概要ページ */
+/* 莨夂､ｾ讎りｦ√・繝ｼ繧ｸ */
 .company_hero_section {
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
               url('../images/company_bg_img.jpg') center/cover no-repeat;
@@ -1477,7 +1573,7 @@ nav a.active {
 }
 .company_profile table.profile-table {
   width: 100%;
-  border-collapse: collapse; /* 元の collapse */
+  border-collapse: collapse; /* 蜈・・ collapse */
 }
 .company_profile table.profile-table th {
   width: 20%;
@@ -1485,29 +1581,29 @@ nav a.active {
 }
 .company_profile table.profile-table th,
 .company_profile table.profile-table td {
-  border: 1px solid #a3a3a3;              /* 罫線を完全に消す */
+  border: 1px solid #a3a3a3;              /* 鄂ｫ邱壹ｒ螳悟・縺ｫ豸医☆ */
   padding: 0.75rem;
   vertical-align: top;
 }
 .company_profile table.profile-table td ul {
-    list-style-position: inside;   /* 点を内側に */
-    padding-left: 1em;            /* 左余白を追加 */
-    margin-top: 0.5em;            /* 上マージンで見た目を整える */
+    list-style-position: inside;   /* 轤ｹ繧貞・蛛ｴ縺ｫ */
+    padding-left: 1em;            /* 蟾ｦ菴咏區繧定ｿｽ蜉 */
+    margin-top: 0.5em;            /* 荳翫・繝ｼ繧ｸ繝ｳ縺ｧ隕九◆逶ｮ繧呈紛縺医ｋ */
 }
 @media (max-width: 600px) {
-  /* セクション幅をフル幅に */
+  /* 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蟷・ｒ繝輔Ν蟷・↓ */
   .company_profile {
-    width: 90vw;          /* 画面の90%を使う */
-    margin: 0 auto 2rem;  /* 下マージンは適宜調整 */
-    padding: 0 1rem;      /* 横パディングで余白を確保 */
+    width: 90vw;          /* 逕ｻ髱｢縺ｮ90%繧剃ｽｿ縺・*/
+    margin: 0 auto 2rem;  /* 荳九・繝ｼ繧ｸ繝ｳ縺ｯ驕ｩ螳懆ｪｿ謨ｴ */
+    padding: 0 1rem;      /* 讓ｪ繝代ョ繧｣繝ｳ繧ｰ縺ｧ菴咏區繧堤｢ｺ菫・*/
   }
 
-  /* <th>を完全に消して、<td>だけをカード化 */
+  /* <th>繧貞ｮ悟・縺ｫ豸医＠縺ｦ縲・td>縺縺代ｒ繧ｫ繝ｼ繝牙喧 */
   .company_profile table.profile-table th {
     display: none;
   }
 
-  /* 既存のテーブル→ブロックに切り替え */
+  /* 譌｢蟄倥・繝・・繝悶Ν竊偵ヶ繝ｭ繝・け縺ｫ蛻・ｊ譖ｿ縺・*/
   .company_profile table.profile-table,
   .company_profile table.profile-table tbody,
   .company_profile table.profile-table tr,
@@ -1516,7 +1612,7 @@ nav a.active {
     width: 100%;
   }
 
-  /* １レコードずつカード化 */
+  /* ・代Ξ繧ｳ繝ｼ繝峨★縺､繧ｫ繝ｼ繝牙喧 */
   .company_profile table.profile-table tr {
     margin-bottom: 1em;
     background: #f9f9f9;
@@ -1524,7 +1620,7 @@ nav a.active {
     padding: 0.75rem;
   }
 
-  /* ラベルを ::before で表示 */
+  /* 繝ｩ繝吶Ν繧・::before 縺ｧ陦ｨ遉ｺ */
   .company_profile table.profile-table td {
     position: relative;
     padding-left: 50%;
@@ -1545,8 +1641,8 @@ nav a.active {
 
 
 
-/* oboardランディングページ */
-.oboard_land_hero {    /* --- ヒーロー画面 --- */
+/* oboard繝ｩ繝ｳ繝・ぅ繝ｳ繧ｰ繝壹・繧ｸ */
+.oboard_land_hero {    /* --- 繝偵・繝ｭ繝ｼ逕ｻ髱｢ --- */
 	background: url('../images/top_hero_back_img.jpg') no-repeat center/cover;
 	color: #fff;
 	text-align: center;
@@ -1559,7 +1655,7 @@ nav a.active {
 .oboard_land_hero p {
 	font-size: 1.5rem;
 }
-.oboard_land_features {    /* --- Oboardができること --- */
+.oboard_land_features {    /* --- Oboard縺後〒縺阪ｋ縺薙→ --- */
 	padding: 8vh 5vw;
 	text-align: center;
   background-color: #eaf9ff;
@@ -1595,7 +1691,7 @@ nav a.active {
 	line-height: 1.6;
 	color: #555;
 }
-.oboard_land_benefit {    /* --- 以下、利活用者のメリット --- */
+.oboard_land_benefit {    /* --- 莉･荳九∝茜豢ｻ逕ｨ閠・・繝｡繝ｪ繝・ヨ --- */
     margin: 0 auto;  
     margin-bottom: 15vh;
     width: 80vw;
@@ -1646,8 +1742,8 @@ nav a.active {
 	flex-direction: row-reverse;
 }
 .oboard_land_benefit .oboard_land_benefit_card_list .oboard_land_benefit_card {
-  /* — 利活用者のメリット：フェードイン初期状態 — */
-	opacity: 0;    /* 左右どちらからか設定：奇数は左、偶数は右 */
+  /* 窶・蛻ｩ豢ｻ逕ｨ閠・・繝｡繝ｪ繝・ヨ・壹ヵ繧ｧ繝ｼ繝峨う繝ｳ蛻晄悄迥ｶ諷・窶・*/
+	opacity: 0;    /* 蟾ｦ蜿ｳ縺ｩ縺｡繧峨°繧峨°險ｭ螳夲ｼ壼･・焚縺ｯ蟾ｦ縲∝・謨ｰ縺ｯ蜿ｳ */
 	transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 	transform: translateX(-50px);
 }
@@ -1655,19 +1751,19 @@ nav a.active {
 	transform: translateX(50px);
 }
 .oboard_land_benefit .oboard_land_benefit_card_list .oboard_land_benefit_card.in-view {
-	opacity: 1;    /* — ビューポートに入ったらリセット — */
+	opacity: 1;    /* 窶・繝薙Η繝ｼ繝昴・繝医↓蜈･縺｣縺溘ｉ繝ｪ繧ｻ繝・ヨ 窶・*/
 	transform: translateX(0);
 }
 
 
-/* --- レスポンシブ対応 --- */
+/* --- 繝ｬ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢・--- */
 @media (max-width: 768px) {
-	/* feature セクション内のカード幅調整 */
+	/* feature 繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ蜀・・繧ｫ繝ｼ繝牙ｹ・ｪｿ謨ｴ */
 	.oboard_land_feature_grid .oboard_land_card {
 		flex: 1 1 100%;
 	}
 
-	/* benefit カードを縦並びに戻す */
+	/* benefit 繧ｫ繝ｼ繝峨ｒ邵ｦ荳ｦ縺ｳ縺ｫ謌ｻ縺・*/
 	.oboard_land_benefits .oboard_land_benefit_card .oboard_land_benefit_card {
 		flex-direction: column;
 	}
@@ -1675,4 +1771,139 @@ nav a.active {
 		width: 100%;
 		height: auto;
 	}
+}
+
+/* --- Mobile layout tweaks (<=640px) --- */
+@media (max-width: 640px) {
+  body {
+    padding-top: 10vh;
+  }
+  header,
+  .top_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9000;
+    transform: translateY(0);
+  }
+  header {
+    height: 12vh;
+    padding: 0.5rem 1rem;
+  }
+  .top_hero__bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+	pointer-events: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+  .top_strength {
+    margin-top: 0;
+    padding: calc(2.5rem + 4vh) 1.25rem 3rem;
+  }
+  .top_strength_three_columns {
+    display: block;
+    margin-bottom: 2rem;
+  }
+  .top_strength_three_columns__center {
+    padding: 0;
+  }
+  .top_strength__text {
+    text-align: center;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 1rem;
+  }
+  .top_service {
+    padding: 3rem 1rem 5rem;
+  }
+  .top_service__header {
+    margin: 2.5rem 0 1.5rem;
+  }
+  .top_service__list {
+    width: 100%;
+    gap: 2.5rem;
+  }
+  .top_service__item {
+    border-radius: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  .top_service__item-content {
+    padding: 1.5rem 1rem;
+    box-shadow: none;
+    border-radius: 1rem;
+  }
+  .top_service_item_bg_board,
+  .top_service_item_bg_grass {
+    display: none !important;
+  }
+  .top_service__item-link {
+    position: static;
+    transform: none;
+    bottom: auto;
+    margin-top: 1rem;
+  }
+  .top_news {
+    padding: 2.5rem 1rem;
+  }
+  .top_news__header {
+    text-align: center;
+  }
+  .top_company,
+  .top_to_service_list {
+    width: 95vw !important;
+    margin: 4vh auto !important;
+    padding: 2.5rem 1.25rem !important;
+  }
+  .top_company__subtitle,
+  .top_company__title,
+  .top_company__text,
+  .top_to_service_list__subtitle,
+  .top_to_service_list__title,
+  .top_to_service_list__text {
+    width: 100% !important;
+  }
+  .top_contact {
+    width: 95vw !important;
+    margin: 6vh auto !important;
+  }
+  .top_contact__link {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .footer-brand {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
+  .footer-logo {
+    margin-right: 0;
+  }
+  .footer-nav {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .footer-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
 }
